@@ -8,8 +8,8 @@ const { data, id } = Astro.props;
 const slug = toSlug(id);
 ---
 
-<a href={`/snippets/${slug}`} class="rounded-lg border border-border p-4 min-h-25 relative overflow-hidden block bg-bg-secondary">
-    <i class="lang-icon absolute top-2 right-2 text-[3em] z-0 not-italic opacity-70" data-lang={data.lang.toLowerCase()}>
+<a href={`/snippets/${slug}`} class="card block p-4 min-h-25 relative overflow-hidden">
+    <i class="lang-icon absolute top-2 right-2 text-5xl z-0 not-italic opacity-70" data-lang={data.lang.toLowerCase()} aria-hidden="true">
         <Icon name={data.lang.toLowerCase()} />
     </i>
     <h4 class="z-10 relative text-fg-titles">{data.title}</h4>

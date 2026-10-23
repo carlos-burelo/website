@@ -14,7 +14,7 @@ export interface Props {
 const { title, description, preview, repository, tags, stack, colClass = '' } = Astro.props;
 ---
 
-<div class={`group relative flex flex-col rounded-2xl border border-border bg-bg-secondary overflow-hidden transition-all duration-300 hover:border-primary min-h-64 ${colClass}`}>
+<div class={`card group relative flex flex-col overflow-hidden min-h-64 ${colClass}`}>
     <!-- full-bleed placeholder -->
     <div class="absolute inset-0">
         <ProjectPlaceholder title={title} stack={stack} />
@@ -29,7 +29,7 @@ const { title, description, preview, repository, tags, stack, colClass = '' } = 
         <div class="flex items-center justify-between">
             <div class="flex flex-wrap gap-1">
                 {tags.slice(0, 3).map((tag: string) => (
-                    <span class="text-[0.6em] px-1.5 py-0.5 rounded border border-white/20 text-white/60 uppercase tracking-wide bg-white/5">
+                    <span class="text-[0.6em] px-1.5 py-0.5 rounded-md border border-white/20 text-white/60 uppercase tracking-wide bg-white/5">
                         {tag}
                     </span>
                 ))}

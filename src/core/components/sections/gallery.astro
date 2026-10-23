@@ -1,15 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import SectionHead from "#components/elements/section-head.astro";
 import img1 from "../../../../public/img1.avif";
 import img2 from "../../../../public/img2.avif";
 import img3 from "../../../../public/img3.avif";
 ---
 
 <section class="mt-16 mb-8">
-    <div class="flex items-center gap-4 mb-8">
-        <span class="text-xs text-fg-paragraph uppercase tracking-widest">About</span>
-        <div class="flex-1 h-px bg-border"></div>
-    </div>
+    <SectionHead overline="Acerca de" />
 
     <!-- desktop: masonry 3-col bento | tablet: 2-col | mobile: stack -->
     <div class="grid gap-3 grid-cols-1 xs:grid-cols-2 md:grid-cols-12 md:grid-rows-2 md:h-105">

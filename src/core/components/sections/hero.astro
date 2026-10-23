@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import logo from "../../../../public/logo.svg";
 ---
 
-<section class="relative flex flex-col justify-center min-h-[calc(100dvh-5em)] gap-12 my-0! -mx-body-sm xs:-mx-body-md md:-mx-body-lg xl:-mx-body-xl 2xl:-mx-body-2xl px-body-sm xs:px-body-md md:px-body-lg xl:px-body-xl 2xl:px-body-2xl">
+<section class="relative flex flex-col justify-center min-h-[calc(100dvh-5em)] gap-12 my-0!">
     <!-- bg glow -->
     <div class="pointer-events-none fixed top-0 right-0 w-96 h-96 md:w-150 md:h-150 rounded-full bg-primary/5 blur-3xl -z-10"></div>
     <div class="pointer-events-none fixed bottom-0 left-0 w-64 h-64 md:w-100 md:h-100 rounded-full bg-primary/3 blur-3xl -z-10"></div>
@@ -46,10 +46,10 @@ import logo from "../../../../public/logo.svg";
             </div>
 
             <div class="flex gap-3 items-center flex-wrap max-md:justify-center">
-                <a href="mailto:carlosfernandoburelo@gmail.com" class="px-5 py-2.5 rounded-lg bg-primary text-bg text-sm font-medium whitespace-nowrap hover:bg-primary/90 transition-all duration-200">
-                    @ Contactame
+                <a href="mailto:carlosfernandoburelo@gmail.com" class="btn btn-primary">
+                    Contáctame
                 </a>
-                <a href="/works" class="px-5 py-2.5 rounded-lg border border-border text-fg-links text-sm font-medium whitespace-nowrap hover:border-primary hover:text-primary transition-all duration-200">
+                <a href="/works" class="btn btn-outline">
                     Ver proyectos
                 </a>
                 <div role="separator" class="w-px bg-border h-6 rounded"></div>

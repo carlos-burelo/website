@@ -29,17 +29,17 @@ const { navTitle } = Astro.props;
             </a>
             <a href="/snippets" class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles">
                 <i class="not-italic" aria-hidden="true">📦</i>
-                <span class="max-sm:hidden">Snippets</span>
+                <span class="max-sm:hidden">Fragmentos</span>
             </a>
             <a href="/resources" class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles">
                 <i class="not-italic" aria-hidden="true">📚</i>
-                <span class="max-sm:hidden">Resources</span>
+                <span class="max-sm:hidden">Recursos</span>
             </a>
         </div>
         {
             navTitle && (
                 <div class="nav-title absolute inset-0 flex justify-center items-center opacity-0 scale-95 transition-nav whitespace-nowrap pointer-events-none" id="nav-title">
-                    <span class="font-medium text-fg-titles text-[0.9em] max-w-[90%] overflow-hidden text-ellipsis">{navTitle}</span>
+                    <span class="font-medium text-fg-titles text-sm max-w-[90%] overflow-hidden text-ellipsis">{navTitle}</span>
                 </div>
             )
         }

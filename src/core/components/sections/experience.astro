@@ -1,5 +1,6 @@
 ---
 import ExperienceCart from "#components/cards/experience-card.astro";
+import SectionHead from "#components/elements/section-head.astro";
 
 const events = [
     {
@@ -34,7 +35,7 @@ const events = [
 ---
 
 <section>
-    <h2 class="my-4">Experience</h2>
+    <SectionHead title="Experiencia" />
     <ul class="grid [&>li:last-child_.line]:hidden">
         {events.map((event) => <ExperienceCart {...event} />)}
     </ul>

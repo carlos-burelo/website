@@ -1,12 +1,13 @@
 ---
 import ProjectCard from "#components/cards/project-card.astro";
+import SectionHead from "#components/elements/section-head.astro";
 import { getCollection } from "astro:content";
 
 const works = await getCollection("works");
 ---
 
 <section>
-    <h2 class="my-4">Proyectos</h2>
+    <SectionHead title="Proyectos" />
     <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4">
         <!-- row 1: wide + normal -->
         <ProjectCard {...works[0].data} colClass="xs:col-span-2 md:col-span-2 min-h-64 md:min-h-72" />
@@ -18,9 +19,9 @@ const works = await getCollection("works");
         <ProjectCard {...works[4].data} colClass="xs:col-span-2 md:col-span-2 min-h-64 md:min-h-72" />
         <a
             href="/works"
-            class="col-span-1 flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-border bg-bg-secondary min-h-48 text-fg-paragraph hover:border-primary hover:text-primary transition-all duration-300 group"
+            class="card col-span-1 flex flex-col items-center justify-center gap-3 p-5 min-h-48 text-fg-paragraph hover:text-primary group"
         >
-            <span class="text-3xl transition-transform duration-300 group-hover:scale-110">→</span>
+            <span class="text-3xl transition-transform duration-300 group-hover:scale-110" aria-hidden="true">→</span>
             <span class="text-sm font-medium uppercase tracking-widest">Ver todos</span>
             <span class="text-xs text-fg-paragraph">{works.length} proyectos</span>
         </a>

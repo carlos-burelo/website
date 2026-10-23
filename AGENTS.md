@@ -86,6 +86,13 @@ headers de seguridad globales. Tras cada `git commit`, correr `tgrep index .`.
   (zod lo ignora). Decidir: añadir al schema o borrarlo.
 - Sin búsqueda (se eliminó `search-bar/modal/cmd`). Si se quiere, solo con índice
   en build-time, nunca lógica inline.
+- `logo.svg`: trazos `#2A2A2A` casi invisibles sobre fondo claro en tema light.
+  Regenerar logo con `fill="currentColor"` o versión por tema.
+- `project-card.astro`: overlay gradient negro fijo (`from-black/80`) sobre
+  `bg-bg-secondary`. En tema light el placeholder queda claro bajo overlay
+  oscuro: verificar contraste o dar a la card `bg-bg` permanente.
+- Rutas: `/works` y `/snippets` quedaron en inglés aunque la UI ahora es
+  100% español. Decidir: mantener (URLs estables) o migrar con redirects.
 
 ## Comandos
 

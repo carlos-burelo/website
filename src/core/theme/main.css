@@ -71,7 +71,7 @@
     --t-bg-emphasis:    #2563eb12;
     --t-bg-dialog:      #f8fafc;
     --t-bg-code-block:  #e2e8f0cc;
-    --t-bg-pre:         #e2e8f066;
+    --t-bg-pre:         #0d1117;
     --t-border:         #cbd5e1;
     --t-fg-icon:        #64748b;
     --t-fg-paragraph:   #475569;
@@ -154,9 +154,27 @@
         list-style-position: inside;
     }
 
+    /* MDX: contenido inline dentro de <li> (listas con código/links) */
+    li > * {
+        display: inline;
+    }
+
     h1, h2, h3, h4, h5, h6 {
         text-wrap: balance;
         scroll-margin-top: 3em;
+        color: var(--t-fg-titles);
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    h1 { font-size: var(--text-3xl); }
+    h2 { font-size: var(--text-2xl); }
+    h3 { font-size: var(--text-xl); }
+
+    :focus-visible {
+        outline: 2px solid var(--t-primary);
+        outline-offset: 2px;
+        border-radius: 0.25em;
     }
 
     img, video {
@@ -388,4 +406,82 @@
     .md-table th:last-child,
     .md-table td:last-child { border-right: none; }
     .md-table tr:last-child td { border-bottom: none; }
+}
+
+/* Design system: canonical interactive patterns.
+   Usar estos utilities en vez de replicar clases por componente. */
+@utility contain {
+    margin-inline: auto;
+    width: 100%;
+    padding-inline: var(--spacing-body-sm);
+    @media (min-width: 500px) {
+        padding-inline: var(--spacing-body-md);
+    }
+    @media (min-width: 900px) {
+        padding-inline: var(--spacing-body-lg);
+    }
+    @media (min-width: 1200px) {
+        padding-inline: var(--spacing-body-xl);
+    }
+    @media (min-width: 1600px) {
+        padding-inline: var(--spacing-body-2xl);
+    }
+}
+
+@utility btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.625em 1.25em;
+    border-radius: var(--radius-lg);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition:
+        background-color 0.2s,
+        color 0.2s,
+        border-color 0.2s;
+}
+
+@utility btn-primary {
+    background-color: var(--t-primary);
+    color: #fff;
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+@utility btn-outline {
+    border-color: var(--t-border);
+    color: var(--t-fg-links);
+    &:hover {
+        border-color: var(--t-primary);
+        color: var(--t-primary);
+    }
+}
+
+@utility badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15em 0.6em;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--t-border);
+    color: var(--t-fg-paragraph);
+    font-size: 0.65em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+}
+
+@utility card {
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--t-border);
+    background-color: var(--t-bg-secondary);
+    transition: border-color 0.2s;
+    &:hover {
+        border-color: var(--t-primary);
+    }
 }

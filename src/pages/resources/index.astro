@@ -1,5 +1,6 @@
 ---
 import Root from "#components/layout/root.astro";
+import SectionHead from "#components/elements/section-head.astro";
 import resources from "#content/resources.json";
 
 const TYPE_ICONS: Record<string, string> = {
@@ -19,10 +20,11 @@ const categories = Object.keys(grouped).sort();
     description="Herramientas, libros, videos y referencias que uso o recomiendo."
 >
     <section class="gap-12">
-        <div class="flex flex-col gap-2">
-            <h1 class="text-3xl font-semibold text-fg-titles">Resources</h1>
-            <p class="text-fg-paragraph text-sm">Herramientas, libros, videos y referencias que uso o recomiendo.</p>
-        </div>
+        <SectionHead
+            level={1}
+            title="Recursos"
+            description="Herramientas, libros, videos y referencias que uso o recomiendo."
+        />
 
         <div class="flex flex-col gap-10">
             {categories.map((category) => (
@@ -38,7 +40,7 @@ const categories = Object.keys(grouped).sort();
                                 href={resource.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="group flex items-start gap-3 p-4 rounded-xl border border-border bg-bg-secondary hover:border-primary transition-colors duration-200"
+                                class="card group flex items-start gap-3 p-4"
                             >
                                 <span class="text-xl shrink-0 mt-0.5" aria-hidden="true">{TYPE_ICONS[resource.type] ?? "🔗"}</span>
                                 <div class="flex flex-col gap-0.5 min-w-0">

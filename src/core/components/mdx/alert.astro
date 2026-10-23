@@ -1,7 +1,7 @@
 ---
-const props = Astro.props
+const props = Astro.props;
 ---
 
-<div {...props}>
+<div {...props} class="my-4 px-4 py-3 rounded-xl border-l-4 border-primary bg-bg-emphasis text-fg-paragraph text-sm leading-relaxed">
     <slot />
 </div>

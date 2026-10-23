@@ -11,7 +11,7 @@ const shown = isUpdated ? updatedAt : createdAt;
 const displayDate = prettyShortDate(shown);
 ---
 
-<a href={`/blog/${slug}`} class="flex justify-between items-center p-4 border-b border-border hover:text-primary">
-    <p>{title}</p>
-    <time class="text-[0.8em] text-nowrap" datetime={shown.toISOString()}>{displayDate}</time>
+<a href={`/blog/${slug}`} class="group flex justify-between items-center gap-4 p-4 -mx-4 rounded-lg border-b border-border transition-colors hover:bg-bg-link-hover">
+    <p class="group-hover:text-primary transition-colors">{title}</p>
+    <time class="text-xs text-nowrap" datetime={shown.toISOString()}>{displayDate}</time>
 </a>
