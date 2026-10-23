@@ -23,8 +23,8 @@
     --spacing-body-sm: 1em;
     --spacing-body-md: 1.5em;
     --spacing-body-lg: 3em;
-    --spacing-body-xl: 18em;
-    --spacing-body-2xl: 30em;
+    --spacing-body-xl: 4em;
+    --spacing-body-2xl: 5em;
 
     /* Breakpoints matching body-inner-separation */
     --breakpoint-xs: 500px;
@@ -70,7 +70,7 @@
 [data-theme="light"] {
     --t-primary:        #2563eb;
     --t-accent:         #0891b2;
-    --t-bg:             #f8fafc;
+    --t-bg:             #f6f8fc;
     --t-bg-secondary:   #e2e8f0cc;
     --t-bg-navbar:      #ffffffcc;
     --t-bg-backdrop:    #f1f5f9cc;
@@ -139,6 +139,13 @@
     body > nav,
     body > div {
         @apply px-body-sm xs:px-body-md md:px-body-lg xl:px-body-xl 2xl:px-body-2xl;
+    }
+
+    /* Columna de contenido centrada con tope: aquiello del coso de
+       pantallas ultra-wide no estira el contenido infinito */
+    body > div {
+        max-width: 110rem;
+        margin-inline: auto;
     }
 
     input, button, textarea, select {
@@ -484,10 +491,19 @@
 @utility btn-primary {
     background-color: var(--t-primary);
     color: #fff;
-    box-shadow: 0 4px 24px 0 color-mix(in oklab, var(--t-primary) 35%, transparent);
+    background-image: linear-gradient(
+        180deg,
+        color-mix(in oklab, #fff 18%, transparent),
+        transparent 55%
+    );
+    box-shadow:
+        inset 0 1px 0 0 color-mix(in oklab, #fff 25%, transparent),
+        0 4px 24px 0 color-mix(in oklab, var(--t-primary) 35%, transparent);
     &:hover {
-        opacity: 0.9;
-        box-shadow: 0 4px 32px 0 color-mix(in oklab, var(--t-primary) 50%, transparent);
+        opacity: 0.92;
+        box-shadow:
+            inset 0 1px 0 0 color-mix(in oklab, #fff 25%, transparent),
+            0 6px 32px 0 color-mix(in oklab, var(--t-primary) 55%, transparent);
     }
 }
 
@@ -517,20 +533,38 @@
     border-radius: var(--radius-2xl);
     border: 1px solid var(--t-border);
     background-color: var(--t-bg-secondary);
-    transition: border-color 0.2s;
+    background-image: linear-gradient(
+        160deg,
+        color-mix(in oklab, var(--t-fg-titles) 4%, transparent),
+        transparent 40%
+    );
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow:
+        inset 0 1px 0 0 color-mix(in oklab, var(--t-fg-titles) 8%, transparent);
     &:hover {
         border-color: var(--t-primary);
+        box-shadow:
+            inset 0 1px 0 0 color-mix(in oklab, var(--t-fg-titles) 12%, transparent),
+            0 8px 32px -12px color-mix(in oklab, var(--t-primary) 25%, transparent);
     }
 }
 
-/* Glass premium 2026: superficie translúcida con brillo superior y halo */
+/* Glass premium 2026: superficie translúcida con reflejo superior,
+   contraluz inferior y tinte del tema */
 @utility glass {
+    background-image: linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--t-fg-titles) 6%, transparent),
+        transparent 45%
+    );
     background-color: var(--t-bg-navbar);
-    backdrop-filter: blur(16px) saturate(1.4);
-    border: 1px solid var(--t-border);
+    backdrop-filter: blur(16px) saturate(1.6);
+    border: 1px solid color-mix(in oklab, var(--t-border) 70%, var(--t-fg-titles) 10%);
     box-shadow:
-        inset 0 1px 0 0 color-mix(in oklab, #fff 7%, transparent),
-        inset 0 0 20px 0 color-mix(in oklab, var(--t-primary) 4%, transparent);
+        inset 0 1px 0 0 color-mix(in oklab, var(--t-fg-titles) 14%, transparent),
+        inset 0 -1px 0 0 color-mix(in oklab, #000 18%, transparent),
+        inset 0 0 24px 0 color-mix(in oklab, var(--t-primary) 5%, transparent),
+        0 8px 32px -8px color-mix(in oklab, #000 45%, transparent);
 }
 
 /* Reveal on scroll: CSS scroll-driven, degradación = visible sin animación */
