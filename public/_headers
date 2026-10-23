@@ -1,0 +1,20 @@
+# Cache estático hasheado por Astro/Vite (1 año, inmutable)
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+# Fuentes e imágenes públicas (1 semana, revalidables)
+# Nota: Cloudflare _headers no soporta wildcards de extensión, se lista explícito.
+/fonts/base.woff2
+  Cache-Control: public, max-age=604800, immutable
+  Content-Type: font/woff2
+/fonts/italic.woff2
+  Cache-Control: public, max-age=604800, immutable
+  Content-Type: font/woff2
+/fonts/code.woff2
+  Cache-Control: public, max-age=604800, immutable
+  Content-Type: font/woff2
+# Seguridad global
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
