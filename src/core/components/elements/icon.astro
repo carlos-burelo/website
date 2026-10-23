@@ -1,4 +1,8 @@
 ---
+export interface Props {
+    name: string;
+}
+
 const { name } = Astro.props;
 
 const icons = import.meta.glob<string>("/src/core/icons/*.svg", {

@@ -1,6 +1,6 @@
 ---
 import Root from "#components/layout/root.astro";
-import resources from "../../content/resources.json";
+import resources from "#content/resources.json";
 
 const TYPE_ICONS: Record<string, string> = {
     tool:    "🔧",
@@ -14,7 +14,10 @@ const grouped = Object.groupBy(resources, (r) => r.category);
 const categories = Object.keys(grouped).sort();
 ---
 
-<Root title="Resources">
+<Root
+    title="Recursos"
+    description="Herramientas, libros, videos y referencias que uso o recomiendo."
+>
     <section class="gap-12">
         <div class="flex flex-col gap-2">
             <h1 class="text-3xl font-semibold text-fg-titles">Resources</h1>
@@ -37,12 +40,12 @@ const categories = Object.keys(grouped).sort();
                                 rel="noopener noreferrer"
                                 class="group flex items-start gap-3 p-4 rounded-xl border border-border bg-bg-secondary hover:border-primary transition-colors duration-200"
                             >
-                                <span class="text-xl shrink-0 mt-0.5">{TYPE_ICONS[resource.type] ?? "🔗"}</span>
+                                <span class="text-xl shrink-0 mt-0.5" aria-hidden="true">{TYPE_ICONS[resource.type] ?? "🔗"}</span>
                                 <div class="flex flex-col gap-0.5 min-w-0">
                                     <span class="text-sm font-medium text-fg-titles group-hover:text-primary transition-colors leading-tight">{resource.title}</span>
                                     <span class="text-xs text-fg-paragraph leading-relaxed">{resource.description}</span>
                                 </div>
-                                <span class="ml-auto shrink-0 text-fg-paragraph group-hover:text-primary transition-colors text-xs mt-0.5">↗</span>
+                                <span class="ml-auto shrink-0 text-fg-paragraph group-hover:text-primary transition-colors text-xs mt-0.5" aria-hidden="true">↗</span>
                             </a>
                         ))}
                     </div>

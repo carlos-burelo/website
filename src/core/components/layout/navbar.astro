@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import pata from "../../../../public/pata.svg";
-const { title } = Astro.props;
+const { navTitle } = Astro.props;
 ---
 
 <nav class="sticky top-body-md z-navbar max-w-fit mx-auto my-body-md grid grid-flow-col gap-4 px-3 py-1 backdrop-blur-[5em] bg-bg-navbar border border-border rounded-[1em] select-none">
@@ -24,81 +24,35 @@ const { title } = Astro.props;
     <div class="nav-content relative flex items-center min-h-body-md min-w-50 max-sm:min-w-full">
         <div class="nav-links flex gap-4 w-full opacity-100 translate-y-0 transition-nav" id="nav-links">
             <a href="/blog" class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles">
-                <i class="not-italic">📑</i>
+                <i class="not-italic" aria-hidden="true">📑</i>
                 <span class="max-sm:hidden">Blog</span>
             </a>
             <a href="/snippets" class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles">
-                <i class="not-italic">📦</i>
+                <i class="not-italic" aria-hidden="true">📦</i>
                 <span class="max-sm:hidden">Snippets</span>
             </a>
             <a href="/resources" class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles">
-                <i class="not-italic">📚</i>
+                <i class="not-italic" aria-hidden="true">📚</i>
                 <span class="max-sm:hidden">Resources</span>
             </a>
         </div>
         {
-            title && title !== "Carlos Burelo" && (
+            navTitle && (
                 <div class="nav-title absolute inset-0 flex justify-center items-center opacity-0 scale-95 transition-nav whitespace-nowrap pointer-events-none" id="nav-title">
-                    <span class="font-medium text-fg-titles text-[0.9em] max-w-[90%] overflow-hidden text-ellipsis">{title}</span>
+                    <span class="font-medium text-fg-titles text-[0.9em] max-w-[90%] overflow-hidden text-ellipsis">{navTitle}</span>
                 </div>
             )
         }
     </div>
 </nav>
 
-<style is:global>
-    :root {
-        --c: cubic-bezier(0.34, 1.56, 0.64, 1);
-        --duration: 0.4s;
-    }
-
-    .transition-nav {
-        transition: all var(--duration) var(--c);
-    }
-
-    .progress-bg {
-        fill: none;
-        stroke: var(--border-color);
-        stroke-width: 2;
-        opacity: 0.3;
-    }
-
-    .progress-bar {
-        fill: none;
-        stroke: var(--primary-color);
-        stroke-width: 2;
-        stroke-dasharray: 100;
-        stroke-dashoffset: 100;
-        stroke-linecap: round;
-        animation: scroll-progress linear;
-        animation-timeline: scroll(root);
-    }
-
-    @keyframes scroll-progress {
-        to {
-            stroke-dashoffset: 0;
-        }
-    }
-
-    .nav-title.active {
-        opacity: 1;
-        transform: scale(1);
-        pointer-events: auto;
-    }
-
-    .nav-links.hidden {
-        opacity: 0;
-        transform: scale(0.95);
-        pointer-events: none;
-    }
-</style>
-
 <script>
-    const navLinks = document.getElementById("nav-links");
-    const navTitle = document.getElementById("nav-title");
-    const articleHeader = document.querySelector("article header");
+    function initNavSwap() {
+        const navLinks = document.getElementById("nav-links");
+        const navTitle = document.getElementById("nav-title");
+        const articleHeader = document.querySelector("article header");
+        if (!navLinks || !navTitle || !articleHeader) return;
 
-    if (navLinks && navTitle && articleHeader) {
         const toggleNavbar = (showTitle: boolean) => {
             navLinks.classList.toggle("hidden", showTitle);
             navTitle.classList.toggle("active", showTitle);
@@ -113,4 +67,6 @@ const { title } = Astro.props;
             { rootMargin: "-80px 0px 0px 0px" },
         ).observe(articleHeader);
     }
+
+    document.addEventListener("astro:page-load", initNavSwap);
 </script>

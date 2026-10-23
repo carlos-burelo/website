@@ -5,17 +5,3 @@ const props = Astro.props;
 <code {...props}>
     <slot />
 </code>
-
-<style>
-    :global(pre code) { display: grid; }
-    :global(code .line) { line-height: 1.8; font-size: 0.9em; }
-    :global(:not(pre) > code) {
-        background-color: var(--background-color-secondary);
-        color: var(--foreground-color-titles);
-        padding: 0 0.25em;
-        line-height: 1.3;
-        border-radius: 0.25em;
-        display: inline-grid;
-        font-size: 0.8em;
-    }
-</style>

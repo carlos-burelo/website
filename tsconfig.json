@@ -6,6 +6,12 @@
       "#components/*": [
         "src/core/components/*",
       ],
+      "#constants/*": [
+        "src/core/constants/*",
+      ],
+      "#content/*": [
+        "src/content/*",
+      ],
       "#libs/*": [
         "src/core/libs/*",
       ],

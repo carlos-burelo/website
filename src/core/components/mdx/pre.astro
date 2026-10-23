@@ -5,9 +5,3 @@ const props = Astro.props;
 <pre {...props} class="bg-bg-pre! border border-border backdrop-blur-md p-4 rounded-lg grid">
     <slot />
 </pre>
-
-<style>
-    pre::-webkit-scrollbar { height: 8px; }
-    pre::-webkit-scrollbar-thumb { background-color: var(--border-color); border-radius: 4px; }
-    pre::-webkit-scrollbar-track { background-color: var(--background-color); }
-</style>

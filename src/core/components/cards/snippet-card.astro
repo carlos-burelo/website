@@ -2,6 +2,8 @@
 import Icon from "#components/elements/icon.astro";
 import { toSlug } from "#libs/providers";
 
+type Props = Pick<Snippet, "data" | "id">;
+
 const { data, id } = Astro.props;
 const slug = toSlug(id);
 ---
@@ -12,29 +14,3 @@ const slug = toSlug(id);
     </i>
     <h4 class="z-10 relative text-fg-titles">{data.title}</h4>
 </a>
-
-<style is:global>
-    .lang-icon[data-lang="javascript"] { color: oklch(79.5% 0.184 86.047); }
-    .lang-icon[data-lang="typescript"] { color: oklch(54.6% 0.245 262.881); }
-    .lang-icon[data-lang="python"]     { color: oklch(68.5% 0.169 237.323); }
-    .lang-icon[data-lang="java"]       { color: oklch(70.5% 0.213 47.604);  }
-    .lang-icon[data-lang="csharp"]     { color: oklch(72.3% 0.219 149.579); }
-    .lang-icon[data-lang="ruby"]       { color: oklch(63.7% 0.237 25.331);  }
-    .lang-icon[data-lang="go"]         { color: oklch(71.5% 0.143 215.221); }
-    .lang-icon[data-lang="php"]        { color: oklch(58.5% 0.233 277.117); }
-    .lang-icon[data-lang="rust"]       { color: oklch(70.5% 0.213 47.604);  }
-    .lang-icon[data-lang="html"]       { color: oklch(63.7% 0.237 25.331);  }
-    .lang-icon[data-lang="css"]        { color: oklch(62.7% 0.265 303.9);   }
-    .lang-icon[data-lang="swift"]      { color: oklch(70.5% 0.213 47.604);  }
-    .lang-icon[data-lang="graphql"]    { color: oklch(65.6% 0.241 354.308); }
-    .lang-icon[data-lang="kotlin"]     { color: oklch(60.6% 0.25 292.717);  }
-    .lang-icon[data-lang="scss"]       { color: oklch(65.6% 0.241 354.308); }
-    .lang-icon[data-lang="dart"]       { color: oklch(71.5% 0.143 215.221); }
-    .lang-icon[data-lang="lua"]        { color: oklch(54.6% 0.245 262.881); }
-    .lang-icon[data-lang="sql"]        { color: oklch(70.5% 0.213 47.604);  }
-    .lang-icon[data-lang="bash"]       { color: oklch(72.3% 0.219 149.579); }
-    .lang-icon[data-lang="powershell"] { color: oklch(54.6% 0.245 262.881); }
-    .lang-icon[data-lang="r"]          { color: oklch(54.6% 0.245 262.881); }
-    .lang-icon[data-lang="c"]          { color: oklch(68.5% 0.169 237.323); }
-    .lang-icon[data-lang="cpp"]        { color: oklch(65.6% 0.241 354.308); }
-</style>

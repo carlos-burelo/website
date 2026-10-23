@@ -1,8 +1,15 @@
 ---
 title: Como funcionan las pilas y colas en la programación y como implementarlas en diferentes lenguajes de programación
+description: 'Qué son las pilas (LIFO) y colas (FIFO), cómo funcionan y cómo implementarlas en distintos lenguajes.'
 createdAt: 2023-04-16
 updatedAt: 2023-04-16
 ---
+
+import { Image } from 'astro:assets';
+import stackIntro from './stacks-and-queues-1.avif';
+import stackExample from './stacks-and-queues-2.avif';
+import queueIntro from './stacks-and-queues-3.avif';
+import queueExample from './stacks-and-queues-4.avif';
 
 ## Introducción
 
@@ -10,12 +17,12 @@ Las pilas y colas son estructuras de datos que se utilizan en la programación p
 
 ## Pilas
 
-![Stack introduction](./stacks-and-queues-1.png)
+<Image src={stackIntro} alt="Diagrama de una pila (stack) y su orden LIFO" widths={[720, 1080]} sizes="(max-width: 720px) 100vw, 720px" format="avif" quality={60} loading="lazy" />
 
 Las pilas son esa estructura de datos que usariamos en la vida real para apilar informacion y poder acceder a la ultima informacion que se agrego.
 Supongamos que tenemos una pila de libros, y queremos acceder al libro que esta en la parte superior de la pila, para eso lo que haremos es sacar todos los libros que estan encima de el, y asi podremos acceder al libro que queremos.
 
-![Stack example](./stacks-and-queues-2.png)
+<Image src={stackExample} alt="Ejemplo de operaciones push y pop en una pila" widths={[720, 1080]} sizes="(max-width: 720px) 100vw, 720px" format="avif" quality={60} loading="lazy" />
 
 Si pensamos en la pila como una lista de nodos, asumiento que el ultimo nodo que se agrego se enlaza con el penultimo nodo, y asi sucesivamente, entonces el ultimo nodo que se agrego sera el primero en salir de la pila.
 
@@ -311,11 +318,11 @@ Retomando lo que hemos visto hasta ahora, podemos resumir las pilas de la siguie
 
 ## Colas
 
-![Queue introduction](./stacks-and-queues-3.png)
+<Image src={queueIntro} alt="Diagrama de una cola (queue) y su orden FIFO" widths={[720, 1080]} sizes="(max-width: 720px) 100vw, 720px" format="avif" quality={60} loading="lazy" />
 
 Las colas son estructuras de datos que siguen el principio de FIFO (First In First Out), es decir, el primer elemento que entra es el primero que sale. Las colas son muy similares a las pilas, pero en lugar de que el ultimo elemento que entra sea el primero en salir, el primer elemento que entra es el primero en salir.
 
-![Queue example](./stacks-and-queues-4.png)
+<Image src={queueExample} alt="Ejemplo de operaciones enqueue y dequeue en una cola" widths={[720, 1080]} sizes="(max-width: 720px) 100vw, 720px" format="avif" quality={60} loading="lazy" />
 
 ### Operaciones
 

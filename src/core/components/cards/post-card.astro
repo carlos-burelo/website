@@ -7,10 +7,11 @@ const { data: { createdAt, updatedAt, title }, id } = post;
 
 const slug = toSlug(id);
 const isUpdated = createdAt.getTime() !== updatedAt.getTime();
-const displayDate = prettyShortDate(isUpdated ? updatedAt : createdAt);
+const shown = isUpdated ? updatedAt : createdAt;
+const displayDate = prettyShortDate(shown);
 ---
 
 <a href={`/blog/${slug}`} class="flex justify-between items-center p-4 border-b border-border hover:text-primary">
     <p>{title}</p>
-    <time class="text-[0.8em] text-nowrap" datetime={displayDate}>{displayDate}</time>
+    <time class="text-[0.8em] text-nowrap" datetime={shown.toISOString()}>{displayDate}</time>
 </a>

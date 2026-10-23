@@ -1,8 +1,13 @@
 ---
 title: VLSM para redes con diferentes tamaños
+description: 'Método eficiente para implementar VLSM y crear subredes de distintos tamaños sin desperdiciar direcciones IPv4.'
 createdAt: 2022-04-21
 updatedAt: 2023-10-04
 ---
+
+import { Image } from 'astro:assets';
+import esquema from './vlsm-esquema.avif';
+import terminado from './vlsm-terminado.avif';
 
 En esta entrada, exploraremos un método eficiente para implementar VLSM (Variable Length Subnet Mask), permitiéndonos crear subredes con tamaños diversos sin redundancias.
 
@@ -18,7 +23,7 @@ Para comprender VLSM, es fundamental tener claridad sobre el direccionamiento IP
 
 Supongamos que nos piden crear sub-redes con diferentes tamaños con los Hosts que se muestran a continuación:
 
-![Topología](./vlsm-esquema.png)
+<Image src={esquema} alt="Topología de red 192.168.50.0/24 con los requisitos de hosts por enlace" widths={[720, 1080]} sizes="(max-width: 720px) 100vw, 720px" format="avif" quality={60} loading="lazy" />
 
 Como podemos observar en la imagen tenemos la dirección: `192.168.50.0/24` a la cual nos solicitan crear sub-redes con diferentes tamaños los cuales son:
 
@@ -116,7 +121,7 @@ El gateway predeterminado es la dirección IP de la interfaz del router que esta
 
 ## Ejemplo terminado
 
-![Topología](./vlsm-terminado.png)
+<Image src={terminado} alt="Subredes VLSM resultantes tras aplicar el método" widths={[720, 1080]} sizes="(max-width: 720px) 100vw, 720px" format="avif" quality={60} loading="lazy" />
 
 ## Conclusión
 

@@ -1,12 +1,15 @@
 ---
-import Root from "../../core/components/layout/root.astro";
+import Root from "#components/layout/root.astro";
 import { getCollection } from "astro:content";
 
 const works = await getCollection("works");
 const sorted = works.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime());
 ---
 
-<Root title="Proyectos">
+<Root
+    title="Proyectos"
+    description="Proyectos públicos de Carlos Burelo: herramientas, librerías y experimentos open source."
+>
     <section>
         <h1 class="text-[2rem] font-semibold">Proyectos</h1>
         <p class="text-fg-paragraph text-sm">{works.length} proyectos públicos</p>

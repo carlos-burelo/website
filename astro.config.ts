@@ -1,11 +1,15 @@
 import { defineConfig } from 'astro/config';
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-    site: 'https://coatl.in',
+    site: 'https://twwk.cc',
     output: 'static',
     compressHTML: true,
+    prefetch: {
+        prefetchAll: true,
+    },
     build: {
         inlineStylesheets: 'auto',
         assets: '_astro',
@@ -15,9 +19,9 @@ export default defineConfig({
             theme: 'one-dark-pro'
         }
     },
-    integrations: [mdx()],
+    integrations: [mdx(), sitemap()],
     vite: {
-        plugins: [tailwindcss() as any],
+        plugins: [tailwindcss()],
         build: {
             cssCodeSplit: true,
             sourcemap: false,

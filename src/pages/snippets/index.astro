@@ -6,6 +6,9 @@ import { getSnippets } from "#libs/providers";
 const snippets = (await getSnippets()).map(({ props: { entry } }) => entry);
 ---
 
-<Root>
+<Root
+    title="Snippets"
+    description="Fragmentos de código listos para copiar: CSS, JavaScript, Python, Rust y más."
+>
     <Snippets snippets={snippets} />
 </Root>

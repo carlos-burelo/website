@@ -1,9 +1,8 @@
 ---
-import Root from "../../core/components/layout/root.astro";
-import components from "../../core/components/mdx";
+import Root from "#components/layout/root.astro";
+import components from "#components/mdx";
 import { render } from "astro:content";
-import type { getStaticPaths } from "../blog/[...slug].astro"
-export { getSnippets as getStaticPaths } from "../../core/libs/providers";
+export { getSnippets as getStaticPaths } from "#libs/providers";
 
 export const prerender = true;
 
@@ -11,7 +10,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Root>
+<Root title={entry.data.title} navTitle={entry.data.title}>
     <h1 class="my-2">{entry.data.title}</h1>
     <article class="grid gap-4">
         <Content components={components} />

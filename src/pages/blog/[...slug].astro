@@ -9,10 +9,17 @@ export const prerender = true;
 
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
-const { title } = entry.data;
+const { title, description, createdAt, updatedAt } = entry.data;
 ---
 
-<Root title={title}>
+<Root
+    title={title}
+    description={description}
+    navTitle={title}
+    type="article"
+    publishedAt={createdAt}
+    updatedAt={updatedAt}
+>
     <Article entry={entry} headings={headings}>
         <Content components={components} />
     </Article>
