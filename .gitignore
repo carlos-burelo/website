@@ -4,6 +4,8 @@ dist/
 .astro/
 # wrangler
 .wrangler/
+# tgrep index
+.tgrep/
 
 # dependencies
 node_modules/
