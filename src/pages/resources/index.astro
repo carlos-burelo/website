@@ -20,7 +20,7 @@ const categories = Object.keys(grouped).sort();
     title="Recursos"
     description="Herramientas, libros, videos y referencias que uso o recomiendo."
 >
-    <section class="gap-12">
+    <section class="reveal w-full max-w-[60rem] mx-auto">
         <SectionHead
             level={1}
             title="Recursos"
@@ -48,7 +48,7 @@ const categories = Object.keys(grouped).sort();
                                     <span class="text-sm font-medium text-fg-titles group-hover:text-primary transition-colors leading-tight">{resource.title}</span>
                                     <span class="text-xs text-fg-paragraph leading-relaxed">{resource.description}</span>
                                 </div>
-                                <span class="ml-auto shrink-0 text-fg-paragraph group-hover:text-primary transition-colors text-xs mt-0.5" aria-hidden="true">↗</span>
+                                <span class="ml-auto shrink-0 text-fg-paragraph/40 group-hover:text-primary transition-colors text-xs mt-0.5" aria-hidden="true">↗</span>
                             </a>
                         ))}
                     </div>

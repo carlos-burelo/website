@@ -11,13 +11,13 @@ const sorted = works.sort((a, b) => b.data.createdAt.getTime() - a.data.createdA
     title="Proyectos"
     description="Proyectos públicos de Carlos Burelo: herramientas, librerías y experimentos open source."
 >
-    <section>
+    <section class="reveal w-full max-w-[60rem] mx-auto">
         <SectionHead level={1} title="Proyectos" description={`${works.length} proyectos públicos`} />
         <ul class="grid mt-4">
             {sorted.map((work) => (
-                <li class="flex items-start justify-between gap-8 py-5 border-b border-border group">
+                <li class="flex items-start justify-between gap-8 py-6 px-3 -mx-3 rounded-xl border-b border-border/50 transition-colors hover:bg-bg-link-hover group">
                     <div class="flex flex-col gap-2 min-w-0">
-                        <h2 class="text-fg-titles font-medium group-hover:text-primary transition-colors">
+                        <h2 class="text-lg text-fg-titles font-semibold group-hover:text-primary transition-colors">
                             {work.data.title}
                         </h2>
                         <p class="text-fg-paragraph text-sm leading-relaxed">{work.data.description}</p>
@@ -29,13 +29,13 @@ const sorted = works.sort((a, b) => b.data.createdAt.getTime() - a.data.createdA
                             ))}
                         </div>
                     </div>
-                    <div class="flex gap-4 items-center shrink-0 pt-1">
+                    <div class="flex gap-2 items-center shrink-0 pt-1">
                         <a href={work.data.preview} target="_blank" rel="noopener noreferrer"
-                            class="text-xs text-fg-links hover:text-primary transition-colors whitespace-nowrap">
+                            class="badge hover:text-primary hover:border-primary transition-colors whitespace-nowrap">
                             Preview ↗
                         </a>
                         <a href={work.data.repository} target="_blank" rel="noopener noreferrer"
-                            class="text-xs text-fg-links hover:text-primary transition-colors whitespace-nowrap">
+                            class="badge hover:text-primary hover:border-primary transition-colors whitespace-nowrap">
                             GitHub ↗
                         </a>
                     </div>

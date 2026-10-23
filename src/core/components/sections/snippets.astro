@@ -14,6 +14,6 @@ const { snippets } = Astro.props;
     title="Fragmentos"
     description="Fragmentos de código listos para copiar: CSS, JavaScript, Python, Rust y más."
 />
-<section class="reveal grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
+<section class="reveal grid-cols-[repeat(auto-fill,minmax(240px,1fr))] max-w-[70rem] mx-auto w-full">
     {snippets.map((snippet) => <SnippetCard {...snippet} />)}
 </section>

@@ -4,7 +4,8 @@ import { Image } from "astro:assets";
 import logo from "../../../../public/logo.svg";
 ---
 
-<footer class="contain pt-12 pb-8 mt-16 border-t border-border">
+<footer class="contain pt-12 pb-8 mt-16">
+    <div class="h-px w-full bg-linear-to-r from-primary/40 via-border to-border" aria-hidden="true"></div>
     <div class="grid grid-cols-[1fr_auto] items-start gap-8 max-sm:grid-cols-1 mb-8">
 
         <!-- brand col -->
@@ -44,8 +45,8 @@ import logo from "../../../../public/logo.svg";
     </div>
 
     <!-- bottom bar -->
-    <div class="flex items-center justify-between pt-6 border-t border-border max-sm:flex-col max-sm:gap-2 max-sm:items-start">
-        <span class="text-xs text-fg-paragraph">MIT {new Date().getFullYear()} — Carlos Burelo</span>
+    <div class="flex items-center justify-between pt-6 max-sm:flex-col max-sm:gap-2 max-sm:items-start">
+        <span class="text-xs text-fg-paragraph/70">MIT {new Date().getFullYear()} — Carlos Burelo</span>
         <div class="flex items-center gap-4">
             <button
                 id="theme-toggle"

@@ -12,7 +12,7 @@ const postByYears = Object.groupBy(posts, ({ props: { entry } }) =>
 const years = Object.keys(postByYears).map(Number).sort((a, b) => b - a);
 ---
 
-<section>
+<section class="reveal w-full max-w-[60rem] mx-auto">
     <SectionHead
         level={1}
         title="Blog"

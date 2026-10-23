@@ -3,7 +3,7 @@ import { prettyShortDate } from "#libs/parsers";
 import { toSlug } from "#libs/providers";
 
 const { post } = Astro.props as { post: Post };
-const { data: { createdAt, updatedAt, title }, id } = post;
+const { data: { createdAt, updatedAt, title, description }, id } = post;
 
 const slug = toSlug(id);
 const isUpdated = createdAt.getTime() !== updatedAt.getTime();
@@ -11,7 +11,20 @@ const shown = isUpdated ? updatedAt : createdAt;
 const displayDate = prettyShortDate(shown);
 ---
 
-<a href={`/blog/${slug}`} class="group flex justify-between items-center gap-4 p-4 -mx-4 rounded-lg border-b border-border transition-colors hover:bg-bg-link-hover">
-    <p class="group-hover:text-primary transition-colors">{title}</p>
-    <time class="text-xs text-nowrap" datetime={shown.toISOString()}>{displayDate}</time>
+<a
+    href={`/blog/${slug}`}
+    class="group flex items-baseline justify-between gap-8 py-5 px-3 -mx-3 rounded-xl border-b border-border/50 transition-colors hover:bg-bg-link-hover"
+>
+    <div class="min-w-0 flex flex-col gap-1">
+        <h3 class="text-fg-titles font-medium group-hover:text-primary transition-colors">
+            {title}
+        </h3>
+        <p class="text-sm text-fg-paragraph leading-relaxed line-clamp-1">{description}</p>
+    </div>
+    <time
+        class="shrink-0 text-xs text-fg-paragraph/60 group-hover:text-fg-paragraph transition-colors text-nowrap"
+        datetime={shown.toISOString()}
+    >
+        {displayDate}
+    </time>
 </a>

@@ -60,6 +60,8 @@
     --t-bg-dialog:      #080b0f;
     --t-bg-code-block:  #0a0b0eb1;
     --t-bg-pre:         #171a2216;
+    --t-blob-a:         #4a80e829;
+    --t-blob-b:         #22d3ee17;
     --t-border:         #20242d;
     --t-fg-icon:        #8994ae;
     --t-fg-paragraph:   #8994ae;
@@ -82,6 +84,8 @@
     --t-bg-dialog:      #f8fafc;
     --t-bg-code-block:  #e2e8f0cc;
     --t-bg-pre:         #0d1117;
+    --t-blob-a:         #93c5fd30;
+    --t-blob-b:         #67e8f926;
     --t-border:         #cbd5e1;
     --t-fg-icon:        #64748b;
     --t-fg-paragraph:   #475569;
@@ -116,24 +120,23 @@
     body > div::after,
     body > div::before {
         content: '';
-        width: 300px;
-        height: 300px;
+        width: 320px;
+        height: 320px;
         position: fixed;
-        filter: blur(10em);
+        filter: blur(9em);
         z-index: -1;
-        opacity: 0.14;
         border-radius: 50%;
     }
 
     body > div::after {
-        background: linear-gradient(45deg, var(--t-primary), var(--t-accent) 60%, transparent);
+        background: linear-gradient(45deg, var(--t-blob-a), var(--t-blob-b) 55%, transparent 75%);
         left: auto;
         right: 0;
         bottom: 0;
     }
 
     body > div::before {
-        background: linear-gradient(45deg, var(--t-accent), transparent 70%), linear-gradient(200deg, var(--t-primary), transparent);
+        background: linear-gradient(45deg, var(--t-blob-b), transparent 60%), linear-gradient(215deg, var(--t-blob-a), transparent 65%);
         left: 0;
         top: 0;
         right: auto;
@@ -394,6 +397,16 @@
         color: var(--t-fg-titles);
         background-color: var(--t-bg-link-hover);
         border-radius: var(--radius-md);
+    }
+
+    /* prosa legible: el artículo nunca pasa de 72ch */
+    article {
+        max-width: 72ch;
+        margin-inline: auto;
+    }
+
+    article h1 {
+        text-wrap: balance;
     }
 
     /* tema activo controla icono del toggle: cero JS */

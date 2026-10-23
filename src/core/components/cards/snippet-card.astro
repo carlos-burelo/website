@@ -9,8 +9,8 @@ const slug = toSlug(id);
 ---
 
 <a href={`/snippets/${slug}`} class="card block p-4 min-h-25 relative overflow-hidden">
-    <i class="lang-icon absolute top-2 right-2 text-5xl z-0 not-italic opacity-70" data-lang={data.lang.toLowerCase()} aria-hidden="true">
+    <i class="lang-icon absolute -top-1 -right-1 text-[3.2rem] z-0 not-italic opacity-60 [filter:saturate(0.9)]" data-lang={data.lang.toLowerCase()} aria-hidden="true">
         <Icon name={data.lang.toLowerCase()} />
     </i>
-    <h4 class="z-10 relative text-fg-titles">{data.title}</h4>
+    <h4 class="z-10 relative pr-14 text-fg-titles font-medium leading-snug self-center h-full flex items-center">{data.title}</h4>
 </a>

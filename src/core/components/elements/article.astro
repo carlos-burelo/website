@@ -19,15 +19,11 @@ const dateTime = isUpdated ? updatedAt.toISOString() : createdAt.toISOString();
 <article class="grid gap-4">
     <header>
         <h1 class="text-3xl [text-wrap:initial] mt-4">{title}</h1>
-        <div class="grid gap-4 grid-flow-col items-center justify-start mt-4 mb-8">
-            <div class="text-fg-paragraph relative flex items-center gap-4">
-                <div class="relative inline-flex items-center">
-                    <time datetime={dateTime}>{displayDate}</time>
-                    {isUpdated && <span class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full shadow-sm" title="Actualizado" />}
-                </div>
-                <span> / </span>
-                <span>{readingTime}</span>
-            </div>
+        <div class="flex items-center justify-start gap-3 mt-4 mb-8 text-sm">
+            {isUpdated && <span class="w-1.5 h-1.5 bg-primary rounded-full shrink-0" title="Actualizado" aria-label="Actualizado" />}
+            <time class="text-fg-paragraph" datetime={dateTime}>{displayDate}</time>
+            <span class="text-fg-paragraph/50" aria-hidden="true">·</span>
+            <span class="text-fg-paragraph">{readingTime}</span>
         </div>
     </header>
     <slot />
