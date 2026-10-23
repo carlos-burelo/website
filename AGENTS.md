@@ -74,13 +74,13 @@ sin justificación escrita. `public/_headers` debe cubrir todo asset
 cacheable (`/_astro/*` immutable 1 año + fonts/imágenes explícitas) y
 headers de seguridad globales. Tras cada `git commit`, correr `tgrep index .`.
 
-## Deuda restante (2026-10-23: Astro 7.4.2, UI/ES unificado, glass premium)
+## Deuda restante (2026-10-22: Astro 7.4.2, UI/ES unificado, hero editorial)
 
 - Sin `og:image`: ningún layout emite imagen OG. Crear `public/og.png` 1200×630
   y cablearlo en `root.astro`.
 - `gallery.astro`: los 3 `alt` son iguales ("Foto personal de Carlos Burelo").
   Describir cada foto real.
-- Imágenes importadas desde `../../../../public/` (hero, gallery, navbar, footer).
+- Imágenes importadas desde `../../../../public/` (gallery, navbar, footer).
   Mover a `src/assets/` (recomendación Astro; `public/` es para archivos verbatim).
 - `blog/next-project-architecture`: campo `category: "Proposal"` fuera del schema
   (zod lo ignora). Decidir: añadir al schema o borrarlo.
@@ -88,9 +88,6 @@ headers de seguridad globales. Tras cada `git commit`, correr `tgrep index .`.
   en build-time, nunca lógica inline.
 - `logo.svg`: trazos `#2A2A2A` casi invisibles sobre fondo claro en tema light.
   Regenerar logo con `fill="currentColor"` o versión por tema.
-- `project-card.astro`: overlay gradient negro fijo (`from-black/80`) sobre
-  `bg-bg-secondary`. En tema light el placeholder queda claro bajo overlay
-  oscuro: verificar contraste o dar a la card `bg-bg` permanente.
 - Rutas: `/works` y `/snippets` quedaron en inglés aunque la UI ahora es
   100% español. Decidir: mantener (URLs estables) o migrar con redirects.
 - `reveal` (scroll-driven) solo anima en Chromium/Firefox nuevos; Safari y

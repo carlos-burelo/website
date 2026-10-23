@@ -147,10 +147,9 @@
         @apply px-body-sm xs:px-body-md md:px-body-lg xl:px-body-xl 2xl:px-body-2xl;
     }
 
-    /* Columna de contenido centrada con tope: aquiello del coso de
-       pantallas ultra-wide no estira el contenido infinito */
+    /* Columna de contenido centrada compacta */
     body > div {
-        max-width: 110rem;
+        max-width: 75rem;
         margin-inline: auto;
     }
 

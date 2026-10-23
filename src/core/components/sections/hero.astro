@@ -1,81 +1,58 @@
 ---
 import Icon from "#components/elements/icon.astro";
-import { Image } from "astro:assets";
-import logo from "../../../../public/logo.svg";
 ---
 
-<section class="reveal relative flex flex-col justify-center min-h-[calc(100dvh-5em)] gap-12 my-0!">
+<section class="reveal relative flex flex-col justify-center min-h-[calc(100dvh-2em)] my-0!">
     <!-- bg glow: dual-color ambient -->
     <div class="pointer-events-none fixed top-0 right-0 w-96 h-96 md:w-150 md:h-150 rounded-full bg-primary/8 blur-3xl -z-10"></div>
     <div class="pointer-events-none fixed bottom-0 left-0 w-64 h-64 md:w-100 md:h-100 rounded-full bg-accent/6 blur-3xl -z-10"></div>
 
-    <div class="relative flex items-center justify-between gap-8 max-md:flex-col-reverse max-md:items-center max-md:text-center">
-        <!-- left col -->
-        <div class="flex flex-col gap-5 max-w-2xl max-md:items-center">
-            <div class="glass text-sm text-fg-paragraph w-fit px-3 py-1.5 rounded-full">
-                <span class="w-2 h-2 rounded-full bg-primary inline-block animate-pulse shrink-0 mr-2"></span>
-                Disponible para proyectos
+    <div class="flex flex-col gap-8 py-16">
+        <div class="glass text-sm text-fg-paragraph w-fit px-3 py-1.5 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-primary inline-block animate-pulse shrink-0 mr-2"></span>
+            Disponible para proyectos
+        </div>
+
+        <!-- display editorial -->
+        <h1 class="text-[clamp(2.5rem,6.25vw,4.5rem)] leading-[1.1] tracking-tighter font-bold text-fg-titles [text-wrap:balance]">
+            <span class="block">Construyendo mis propias ideas,</span>
+            <span class="block bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">ayudando a impulsar las tuyas.</span>
+        </h1>
+
+        <p class="text-fg-paragraph leading-relaxed max-w-xl text-base md:text-lg">
+            Más de 8 años desarrollando software para clientes, productos propios y proyectos open source.
+            Me especializo en convertir necesidades complejas en soluciones claras, eficientes y fáciles de mantener.
+        </p>
+
+        <div class="flex gap-10 max-md:gap-8 flex-wrap">
+            <div class="flex flex-col">
+                <span class="text-2xl font-bold text-fg-titles">+8</span>
+                <span class="text-xs text-fg-paragraph/80">años de experiencia</span>
             </div>
-
-            <h1 class="text-3xl xs:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-semibold leading-[1.12] tracking-tight text-fg-titles [text-wrap:balance]">
-                <span class="block">Construyendo mis propias ideas,</span>
-                <span class="block bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">ayudando a impulsar las tuyas.</span>
-            </h1>
-
-            <p class="text-fg-paragraph leading-relaxed max-w-lg text-sm md:text-base xl:text-lg">
-                Más de 8 años desarrollando software para clientes, productos propios y proyectos open source.
-                Me especializo en convertir necesidades complejas en soluciones claras, eficientes y fáciles de mantener.
-            </p>
-
-            <!-- stats: tipografía pura (typographic hierarchy) -->
-            <div class="flex gap-10 max-md:gap-8 max-md:justify-center py-2">
-                <div class="flex flex-col">
-                    <span class="text-2xl font-bold text-fg-titles">+8</span>
-                    <span class="text-xs text-fg-paragraph/80">años de experiencia</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-2xl font-bold text-fg-titles">+50</span>
-                    <span class="text-xs text-fg-paragraph/80">proyectos lanzados</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-2xl font-bold text-fg-titles">OSS</span>
-                    <span class="text-xs text-fg-paragraph/80">open source mantenido</span>
-                </div>
+            <div class="flex flex-col">
+                <span class="text-2xl font-bold text-fg-titles">+50</span>
+                <span class="text-xs text-fg-paragraph/80">proyectos lanzados</span>
             </div>
-
-            <div class="flex gap-3 items-center flex-wrap max-md:justify-center">
-                <a href="mailto:carlosfernandoburelo@gmail.com" class="btn btn-primary">
-                    Contáctame
-                </a>
-                <a href="/works" class="btn btn-outline">
-                    Ver proyectos
-                </a>
-                <div role="separator" class="w-px bg-border h-6 rounded"></div>
-                <a href="https://github.com/carlos-burelo" target="_blank" rel="noopener" aria-label="GitHub" class="glass text-fg-paragraph hover:text-primary transition-colors p-2 rounded-full">
-                    <Icon name="github" />
-                </a>
-                <a href="https://linkedin.com/in/carlos-burelo" target="_blank" rel="noopener" aria-label="LinkedIn" class="glass text-fg-paragraph hover:text-primary transition-colors p-2 rounded-full">
-                    <Icon name="linkedin" />
-                </a>
+            <div class="flex flex-col">
+                <span class="text-2xl font-bold text-fg-titles">OSS</span>
+                <span class="text-xs text-fg-paragraph/80">open source mantenido</span>
             </div>
         </div>
 
-        <!-- right col -->
-        <div class="relative shrink-0 flex items-center justify-center w-52 h-52 xs:w-64 xs:h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
-            <!-- halo -->
-            <div class="absolute inset-8 rounded-full bg-primary/10 blur-2xl -z-10"></div>
-            <!-- anillo cónico full-ring: gradiente + mask radial = aro real, no crescent -->
-            <div class="absolute inset-0 rounded-full animate-bg-spin [background:conic-gradient(from_180deg,var(--t-primary),var(--t-accent),transparent_62%)] [mask:radial-gradient(farthest-side,transparent_calc(100%-3px),#000_calc(100%-3px))]"></div>
-            <!-- inner ring -->
-            <div class="absolute inset-5 rounded-full border border-border/30"></div>
-            <Image
-                src={logo}
-                alt="Logo"
-                width={260}
-                height={260}
-                loading="eager"
-                class="relative z-10 opacity-95 w-36 h-36 xs:w-44 xs:h-44 md:w-52 md:h-52 xl:w-64 xl:h-64 2xl:w-72 2xl:h-72 object-contain animate-float"
-            />
+        <div class="flex gap-3 items-center flex-wrap">
+            <a href="mailto:carlosfernandoburelo@gmail.com" class="btn btn-primary">
+                Contáctame
+            </a>
+            <a href="/works" class="btn btn-outline">
+                Ver proyectos
+            </a>
+            <div role="separator" class="w-px bg-border h-6 rounded"></div>
+            <a href="https://github.com/carlos-burelo" target="_blank" rel="noopener" aria-label="GitHub" class="glass text-fg-paragraph hover:text-primary transition-colors p-2 rounded-full">
+                <Icon name="github" />
+            </a>
+            <a href="https://linkedin.com/in/carlos-burelo" target="_blank" rel="noopener" aria-label="LinkedIn" class="glass text-fg-paragraph hover:text-primary transition-colors p-2 rounded-full">
+                <Icon name="linkedin" />
+            </a>
         </div>
     </div>
 </section>
