@@ -18,7 +18,7 @@ const years = Object.keys(postByYears).map(Number).sort((a, b) => b - a);
         title="Blog"
         description="Artículos sobre programación: JavaScript, estructuras de datos, redes, arquitectura y diseño de lenguajes."
     />
-    <div class="flex flex-col gap-12">
+    <div class="reveal flex flex-col gap-12">
         {years.map((year) => (
             <div>
                 <h2>{year}</h2>

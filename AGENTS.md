@@ -74,11 +74,11 @@ sin justificación escrita. `public/_headers` debe cubrir todo asset
 cacheable (`/_astro/*` immutable 1 año + fonts/imágenes explícitas) y
 headers de seguridad globales. Tras cada `git commit`, correr `tgrep index .`.
 
-## Deuda restante (2026-10-23: Astro 7.4.2, SEO por página, sitemap+RSS+404)
+## Deuda restante (2026-10-23: Astro 7.4.2, UI/ES unificado, glass premium)
 
 - Sin `og:image`: ningún layout emite imagen OG. Crear `public/og.png` 1200×630
   y cablearlo en `root.astro`.
-- `gallery.astro`: los 3 `alt` son genéricos ("Foto personal de Carlos Burelo").
+- `gallery.astro`: los 3 `alt` son iguales ("Foto personal de Carlos Burelo").
   Describir cada foto real.
 - Imágenes importadas desde `../../../../public/` (hero, gallery, navbar, footer).
   Mover a `src/assets/` (recomendación Astro; `public/` es para archivos verbatim).
@@ -93,6 +93,8 @@ headers de seguridad globales. Tras cada `git commit`, correr `tgrep index .`.
   oscuro: verificar contraste o dar a la card `bg-bg` permanente.
 - Rutas: `/works` y `/snippets` quedaron en inglés aunque la UI ahora es
   100% español. Decidir: mantener (URLs estables) o migrar con redirects.
+- `reveal` (scroll-driven) solo anima en Chromium/Firefox nuevos; Safari y
+  fallback muestran contenido estático (diseño aceptable, no bug).
 
 ## Comandos
 

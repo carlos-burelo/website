@@ -4,7 +4,7 @@ import pata from "../../../../public/pata.svg";
 const { navTitle } = Astro.props;
 ---
 
-<nav class="sticky top-body-md z-navbar max-w-fit mx-auto my-body-md grid grid-flow-col gap-4 px-3 py-1 backdrop-blur-[5em] bg-bg-navbar border border-border rounded-[1em] select-none">
+<nav class="glass sticky top-body-md z-navbar max-w-fit mx-auto my-body-md grid grid-flow-col gap-4 px-3 py-1 rounded-[1em] select-none">
     <div class="progress-circle relative w-[2em] h-[2em] flex items-center justify-center">
         <svg viewBox="0 0 36 36" class="absolute w-full h-full -rotate-90">
             <path
@@ -23,15 +23,27 @@ const { navTitle } = Astro.props;
     <div role="separator" class="w-px my-auto h-[70%] bg-border rounded-sm"></div>
     <div class="nav-content relative flex items-center min-h-body-md min-w-50 max-sm:min-w-full">
         <div class="nav-links flex gap-4 w-full opacity-100 translate-y-0 transition-nav" id="nav-links">
-            <a href="/blog" class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles">
+            <a
+                href="/blog"
+                aria-current={Astro.url.pathname.startsWith("/blog") ? "page" : undefined}
+                class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles"
+            >
                 <i class="not-italic" aria-hidden="true">📑</i>
                 <span class="max-sm:hidden">Blog</span>
             </a>
-            <a href="/snippets" class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles">
+            <a
+                href="/snippets"
+                aria-current={Astro.url.pathname.startsWith("/snippets") ? "page" : undefined}
+                class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles"
+            >
                 <i class="not-italic" aria-hidden="true">📦</i>
                 <span class="max-sm:hidden">Fragmentos</span>
             </a>
-            <a href="/resources" class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles">
+            <a
+                href="/resources"
+                aria-current={Astro.url.pathname.startsWith("/resources") ? "page" : undefined}
+                class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles"
+            >
                 <i class="not-italic" aria-hidden="true">📚</i>
                 <span class="max-sm:hidden">Recursos</span>
             </a>
