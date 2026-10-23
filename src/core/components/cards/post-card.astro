@@ -1,6 +1,6 @@
 ---
-import { prettyShortDate } from "#libs/parsers";
-import { toSlug } from "#libs/providers";
+import { prettyShortDate } from "@/core/libs/parsers";
+import { toSlug } from "@/core/libs/providers";
 
 const { post } = Astro.props as { post: Post };
 const { data: { createdAt, updatedAt, title, description }, id } = post;
@@ -13,16 +13,16 @@ const displayDate = prettyShortDate(shown);
 
 <a
     href={`/blog/${slug}`}
-    class="group flex items-baseline justify-between gap-8 py-5 px-3 -mx-3 rounded-xl border-b border-border/50 transition-colors hover:bg-bg-link-hover"
+    class="group flex items-baseline justify-between gap-8 py-5 ruled"
 >
     <div class="min-w-0 flex flex-col gap-1">
-        <h3 class="text-fg-titles font-medium group-hover:text-primary transition-colors">
+        <h3 class="text-lg md:text-xl group-hover:text-primary transition-colors">
             {title}
         </h3>
         <p class="text-sm text-fg-paragraph leading-relaxed line-clamp-1">{description}</p>
     </div>
     <time
-        class="shrink-0 text-xs text-fg-paragraph/60 group-hover:text-fg-paragraph transition-colors text-nowrap"
+        class="shrink-0"
         datetime={shown.toISOString()}
     >
         {displayDate}

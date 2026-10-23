@@ -1,70 +1,65 @@
 ---
 import { Image } from "astro:assets";
-import SectionHead from "#components/elements/section-head.astro";
-import img1 from "../../../../public/img1.avif";
-import img2 from "../../../../public/img2.avif";
-import img3 from "../../../../public/img3.avif";
+import SectionHead from "@/core/components/elements/section-head.astro";
+import foto1 from "@/assets/foto-1.avif";
+import foto2 from "@/assets/foto-2.avif";
+import foto3 from "@/assets/foto-3.avif";
 ---
 
-<section class="mt-16 mb-8">
-    <SectionHead overline="Acerca de" />
+<section>
+    <SectionHead title="Fuera del trabajo" />
 
-    <!-- desktop: masonry 3-col bento | tablet: 2-col | mobile: stack -->
-    <div class="reveal grid gap-3 grid-cols-1 xs:grid-cols-2 md:grid-cols-12 md:grid-rows-2 md:h-105">
-
+    <div class="grid gap-4 xs:grid-cols-2 md:grid-cols-12">
         <!-- foto grande izquierda -->
-        <div class="overflow-hidden rounded-2xl md:col-span-4 md:row-span-2 h-64 xs:h-72 md:h-auto">
-            <Image
-                src={img1}
-                alt="Foto personal de Carlos Burelo"
-                width={500}
-                height={700}
-                loading="lazy"
-                decoding="async"
-                quality={85}
-                format="avif"
-                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-[1.03]"
-            />
-        </div>
+        <figure class="md:col-span-7">
+            <div class="overflow-hidden rounded-lg border border-border">
+                <Image
+                    src={foto1}
+                    alt="Carlos Burelo en pleno salto desde una pared curva naranja, con palmeras y arbustos detrás"
+                    width={500}
+                    height={700}
+                    loading="lazy"
+                    decoding="async"
+                    quality={85}
+                    format="avif"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </figure>
 
-        <!-- foto top centro -->
-        <div class="overflow-hidden rounded-2xl md:col-span-4 md:row-span-1 h-64 xs:h-48 md:h-auto">
-            <Image
-                src={img2}
-                alt="Foto personal de Carlos Burelo"
-                width={500}
-                height={300}
-                loading="lazy"
-                decoding="async"
-                quality={85}
-                format="avif"
-                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-[1.03]"
-            />
-        </div>
+        <!-- columna derecha: dos fotos -->
+        <div class="grid gap-4 xs:col-span-2 md:col-span-5">
+            <figure>
+                <div class="overflow-hidden rounded-lg border border-border aspect-4/3">
+                    <Image
+                        src={foto2}
+                        alt="Un gatito siamés jugando con un cachorro de Golden Retriever dentro de una silla acapulco amarilla, tomada desde arriba"
+                        width={500}
+                        height={300}
+                        loading="lazy"
+                        decoding="async"
+                        quality={85}
+                        format="avif"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+            </figure>
 
-        <!-- cita bottom centro -->
-        <div class="flex flex-col justify-center gap-2 rounded-2xl border border-border bg-bg-secondary p-6 md:col-span-4 md:row-span-1">
-            <span class="text-3xl text-primary leading-none">"</span>
-            <p class="text-fg-titles text-sm leading-relaxed font-medium">
-                Construyo cosas porque me gusta ver ideas tomar forma. El código es solo el medio.
-            </p>
-            <span class="text-xs text-fg-paragraph mt-1">— Carlos Burelo</span>
+            <figure>
+                <div class="overflow-hidden rounded-lg border border-border aspect-4/3">
+                    <Image
+                        src={foto3}
+                        alt="Gata siamesa de ojos azules levantando la cabeza para mirar a la cámara"
+                        width={500}
+                        height={300}
+                        loading="lazy"
+                        decoding="async"
+                        quality={85}
+                        format="avif"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+            </figure>
         </div>
-
-        <!-- foto derecha tall -->
-        <div class="overflow-hidden rounded-2xl xs:col-span-2 md:col-span-4 md:row-span-2 h-64 xs:h-72 md:h-auto">
-            <Image
-                src={img3}
-                alt="Foto personal de Carlos Burelo"
-                width={500}
-                height={700}
-                loading="lazy"
-                decoding="async"
-                quality={85}
-                format="avif"
-                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-[1.03]"
-            />
-        </div>
-
     </div>
 </section>

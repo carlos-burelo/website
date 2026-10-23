@@ -1,10 +1,10 @@
 ---
-import Root from "#components/layout/root.astro";
+import Root from "@/core/components/layout/root.astro";
 ---
 
 <Root title="No encontrado" noindex={true}>
-    <section class="reveal flex flex-col items-center justify-center gap-4 min-h-[50dvh] text-center">
-        <span class="text-6xl font-bold bg-linear-to-b from-fg-titles to-primary text-transparent bg-clip-text [text-wrap:initial]">404</span>
+    <section class="flex flex-col items-center justify-center gap-4 min-h-[50dvh] text-center">
+        <span class="display text-6xl font-medium">404</span>
         <p class="text-fg-paragraph text-sm max-w-xs">
             Esta página no existe o fue movida.
         </p>
@@ -13,3 +13,9 @@ import Root from "#components/layout/root.astro";
         </a>
     </section>
 </Root>
+
+<style>
+    .display {
+        font-family: var(--font-family-display);
+    }
+</style>

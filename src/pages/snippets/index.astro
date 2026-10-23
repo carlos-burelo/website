@@ -1,7 +1,7 @@
 ---
-import Root from "#components/layout/root.astro";
-import Snippets from "#components/sections/snippets.astro";
-import { getSnippets } from "#libs/providers";
+import Root from "@/core/components/layout/root.astro";
+import Snippets from "@/core/components/sections/snippets.astro";
+import { getSnippets } from "@/core/libs/providers";
 
 const snippets = (await getSnippets()).map(({ props: { entry } }) => entry);
 ---

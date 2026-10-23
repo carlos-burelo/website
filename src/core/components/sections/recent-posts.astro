@@ -1,0 +1,40 @@
+---
+import { prettyShortDate } from "@/core/libs/parsers";
+import { getPosts, toSlug } from "@/core/libs/providers";
+
+const posts = (await getPosts()).slice(0, 3);
+
+export interface Props {
+    count?: number;
+}
+const { count = 3 } = Astro.props;
+
+const teaser = posts.slice(0, count);
+---
+
+<section>
+    <div class="flex items-baseline justify-between gap-4 border-b border-border pb-4">
+        <h2 class="text-2xl">Escribo</h2>
+        <a href="/blog" class="text-sm text-fg-links underline underline-offset-4 decoration-transparent hover:decoration-primary hover:text-primary transition-colors">
+            Todos los artículos
+        </a>
+    </div>
+    <ul class="flex flex-col">
+        {teaser.map(({ props: { entry } }) => {
+            const { data: { createdAt, updatedAt, title }, id } = entry;
+            const isUpdated = createdAt.getTime() !== updatedAt.getTime();
+            const shown = isUpdated ? updatedAt : createdAt;
+            return (
+                <li class="ruled py-4 group flex items-baseline justify-between gap-6">
+                    <a href={`/blog/${toSlug(id)}`} class="group-hover:text-primary transition-colors min-w-0">
+                        {title}
+                    </a>
+                    <time
+                        class="shrink-0 text-fg-paragraph group-hover:text-primary transition-colors"
+                        datetime={shown.toISOString()}
+                    >{prettyShortDate(shown)}</time>
+                </li>
+            );
+        })}
+    </ul>
+</section>

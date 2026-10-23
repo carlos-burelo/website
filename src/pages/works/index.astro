@@ -1,6 +1,6 @@
 ---
-import Root from "#components/layout/root.astro";
-import SectionHead from "#components/elements/section-head.astro";
+import Root from "@/core/components/layout/root.astro";
+import SectionHead from "@/core/components/elements/section-head.astro";
 import { getCollection } from "astro:content";
 
 const works = await getCollection("works");
@@ -11,17 +11,20 @@ const sorted = works.sort((a, b) => b.data.createdAt.getTime() - a.data.createdA
     title="Proyectos"
     description="Proyectos públicos de Carlos Burelo: herramientas, librerías y experimentos open source."
 >
-    <section class="reveal w-full max-w-[60rem] mx-auto">
+    <section class="w-full max-w-[60rem] mx-auto">
         <SectionHead level={1} title="Proyectos" description={`${works.length} proyectos públicos`} />
         <ul class="grid mt-4">
             {sorted.map((work) => (
-                <li class="flex items-start justify-between gap-8 py-6 px-3 -mx-3 rounded-xl border-b border-border/50 transition-colors hover:bg-bg-link-hover group">
+                <li class="ruled grid md:grid-cols-[1fr_auto] items-start justify-between gap-8 py-6 group">
                     <div class="flex flex-col gap-2 min-w-0">
-                        <h2 class="text-lg text-fg-titles font-semibold group-hover:text-primary transition-colors">
+                        <h2 class="text-lg md:text-xl group-hover:text-primary transition-colors">
                             {work.data.title}
                         </h2>
-                        <p class="text-fg-paragraph text-sm leading-relaxed">{work.data.description}</p>
+                        <p class="text-fg-paragraph text-sm leading-relaxed max-w-[70ch]">{work.data.description}</p>
                         <div class="flex flex-wrap gap-2 mt-1">
+                            {Object.keys(work.data.stack).map(stack => (
+                                <span class="badge">{stack}</span>
+                            ))}
                             {work.data.tags.map(tag => (
                                 <span class="badge">
                                     {tag}
@@ -29,15 +32,20 @@ const sorted = works.sort((a, b) => b.data.createdAt.getTime() - a.data.createdA
                             ))}
                         </div>
                     </div>
-                    <div class="flex gap-2 items-center shrink-0 pt-1">
-                        <a href={work.data.preview} target="_blank" rel="noopener noreferrer"
-                            class="badge hover:text-primary hover:border-primary transition-colors whitespace-nowrap">
-                            Preview ↗
-                        </a>
-                        <a href={work.data.repository} target="_blank" rel="noopener noreferrer"
-                            class="badge hover:text-primary hover:border-primary transition-colors whitespace-nowrap">
-                            GitHub ↗
-                        </a>
+                    <div class="flex flex-col items-end gap-3 shrink-0">
+                        <time class="text-fg-paragraph text-base md:text-lg" datetime={work.data.createdAt.toISOString()}>
+                            {work.data.createdAt.getFullYear()}
+                        </time>
+                        <div class="flex gap-2 items-center">
+                            <a href={work.data.preview} target="_blank" rel="noopener noreferrer"
+                                class="badge hover:text-primary hover:border-primary transition-colors whitespace-nowrap">
+                                Preview
+                            </a>
+                            <a href={work.data.repository} target="_blank" rel="noopener noreferrer"
+                                class="badge hover:text-primary hover:border-primary transition-colors whitespace-nowrap">
+                                GitHub
+                            </a>
+                        </div>
                     </div>
                 </li>
             ))}

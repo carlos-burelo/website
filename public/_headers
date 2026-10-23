@@ -4,13 +4,7 @@
 # Fuentes (1 semana, inmutables)
 /fonts/*
   Cache-Control: public, max-age=604800, immutable
-# Imágenes y CV públicos (1 semana)
-/img1.avif
-  Cache-Control: public, max-age=604800, immutable
-/img2.avif
-  Cache-Control: public, max-age=604800, immutable
-/img3.avif
-  Cache-Control: public, max-age=604800, immutable
+# CV público (1 semana)
 /cv.pdf
   Cache-Control: public, max-age=604800, immutable
 # Seguridad global

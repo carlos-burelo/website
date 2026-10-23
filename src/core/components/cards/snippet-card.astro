@@ -1,16 +1,29 @@
 ---
-import Icon from "#components/elements/icon.astro";
-import { toSlug } from "#libs/providers";
+import Icon from "@/core/components/elements/icon.astro";
+import { toSlug } from "@/core/libs/providers";
 
-type Props = Pick<Snippet, "data" | "id">;
+type Props = Pick<Snippet, "data" | "id"> & { body?: string };
 
-const { data, id } = Astro.props;
+const { data, id, body } = Astro.props as Props;
 const slug = toSlug(id);
+
+// preview: primer bloque de código (hasta 4 líneas)
+const lang = data.lang.toLowerCase();
+const fence = body?.match(/```[\w]+\n([\s\S]+?)```/)?.[1] ?? body ?? "";
+const preview = fence
+    .split("\n")
+    .slice(0, 4)
+    .map((l) => l.trimEnd())
+    .join("\n")
+    .trim();
 ---
 
-<a href={`/snippets/${slug}`} class="card block p-4 min-h-25 relative overflow-hidden">
-    <i class="lang-icon absolute -top-1 -right-1 text-[3.2rem] z-0 not-italic opacity-60 [filter:saturate(0.9)]" data-lang={data.lang.toLowerCase()} aria-hidden="true">
-        <Icon name={data.lang.toLowerCase()} />
-    </i>
-    <h4 class="z-10 relative pr-14 text-fg-titles font-medium leading-snug self-center h-full flex items-center">{data.title}</h4>
+<a href={`/snippets/${slug}`} class="card block p-4 flex flex-col gap-3">
+    <div class="flex items-center gap-2">
+        <span class="lang-icon text-fg-icon shrink-0" data-lang={lang} aria-hidden="true">
+            <Icon name={lang} />
+        </span>
+        <h4 class="text-fg-titles leading-snug [text-wrap:balance]">{data.title}</h4>
+    </div>
+    <pre class="text-[0.72rem] bg-transparent! border-0! p-0! m-0! whitespace-pre-wrap [mask-image:linear-gradient(180deg,black_70%,transparent_100%)]"><code>{preview}</code></pre>
 </a>

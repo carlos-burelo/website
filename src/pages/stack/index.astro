@@ -1,0 +1,89 @@
+---
+import Root from "@/core/components/layout/root.astro";
+import SectionHead from "@/core/components/elements/section-head.astro";
+import Icon from "@/core/components/elements/icon.astro";
+import resources from "@/content/resources.json";
+
+const TYPE_ICONS: Record<string, string> = {
+    tool: "wrench",
+    book: "book",
+    website: "globe",
+    video: "video",
+    library: "package",
+};
+
+const stack = [
+    {
+        area: "Lenguajes",
+        tools: "TypeScript, Rust, Dart, CSS",
+        note: "La web y las librerías en TS; los lenguajes y las herramientas en Rust; lo móvil en Dart.",
+    },
+    {
+        area: "Web",
+        tools: "Astro, Tailwind 4, Node, Cloudflare Workers",
+        note: "Sitios estáticos que se generan en build y se sirven desde el edge.",
+    },
+    {
+        area: "Datos",
+        tools: "JSON, SQLite, D3",
+        note: "Bases embebidas y formatos binarios sobre JSON; gráficas SSR-first.",
+    },
+];
+
+const grouped = Object.groupBy(resources, (r) => r.category);
+const categories = Object.keys(grouped).sort();
+---
+
+<Root
+    title="Stack"
+    description="Herramientas, librerías, libros y referencias que uso y recomiendo para desarrollar."
+>
+    <section class="w-full max-w-[60rem] mx-auto">
+        <SectionHead
+            level={1}
+            title="Stack"
+            description="Qué uso para desarrollar: herramientas, librerías y referencias."
+        />
+
+        <ul class="grid mt-4">
+            {
+                stack.map((entry) => (
+                    <li class="ruled grid md:grid-cols-[10ch_1fr] gap-2 md:gap-10 items-baseline py-5">
+                        <span class="text-sm text-fg-paragraph">{entry.area}</span>
+                        <div class="flex flex-col gap-1 min-w-0">
+                            <p class="text-fg-titles">{entry.tools}</p>
+                            <p class="text-sm text-fg-paragraph leading-relaxed max-w-[65ch]">{entry.note}</p>
+                        </div>
+                    </li>
+                ))
+            }
+        </ul>
+
+        <div class="flex items-center gap-4 mt-12">
+            <h2 class="display italic text-primary text-lg">Herramientas y referencias</h2>
+            <div class="flex-1 h-px bg-border"></div>
+            <span class="text-xs text-fg-paragraph">{resources.length}</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mt-6 max-sm:grid-cols-1">
+            {
+                resources.map((resource) => (
+                    <a
+                        href={resource.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="card group flex items-start gap-3 p-4"
+                    >
+                        <span class="shrink-0 mt-0.5 text-fg-paragraph group-hover:text-primary transition-colors" aria-hidden="true">
+                            <Icon name={TYPE_ICONS[resource.type] ?? "link"} />
+                        </span>
+                        <span class="flex flex-col gap-0.5 min-w-0">
+                            <span class="text-sm font-medium text-fg-titles group-hover:text-primary transition-colors leading-tight">{resource.title}</span>
+                            <span class="text-xs text-fg-paragraph leading-relaxed">{resource.description}</span>
+                        </span>
+                    </a>
+                ))
+            }
+        </div>
+    </section>
+</Root>

@@ -1,11 +1,9 @@
 ---
-import { Image } from "astro:assets";
-import Icon from "#components/elements/icon.astro";
-import pata from "../../../../public/pata.svg";
+import pataRaw from "@/assets/pata.svg?raw";
 const { navTitle } = Astro.props;
 ---
 
-<nav class="glass sticky top-body-md z-navbar max-w-fit mx-auto my-body-md grid grid-flow-col gap-4 px-3 py-1 rounded-[1em] select-none">
+<nav class="glass sticky top-body-md z-navbar max-w-fit mx-auto my-body-md grid grid-flow-col gap-2 px-3 py-1.5 rounded-xl select-none">
     <div class="progress-circle relative w-[2em] h-[2em] flex items-center justify-center">
         <svg viewBox="0 0 36 36" class="absolute w-full h-full -rotate-90">
             <path
@@ -17,41 +15,45 @@ const { navTitle } = Astro.props;
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
             ></path>
         </svg>
-        <a href="/" class="home-link relative z-10 flex items-center justify-center w-full h-full rounded-full transition-transform duration-200 ease-in-out hover:scale-110 no-underline">
-            <Image src={pata} alt="Home" width={24} height={24} class="w-5 h-5 object-contain"  />
+        <a href="/" class="home-link relative z-10 flex items-center justify-center w-full h-full rounded-full transition-transform duration-200 ease-in-out hover:scale-110 no-underline text-fg-titles" aria-label="Inicio">
+            <span class="w-5 h-5 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full" set:html={pataRaw} />
         </a>
     </div>
     <div role="separator" class="w-px my-auto h-[70%] bg-border rounded-sm"></div>
     <div class="nav-content relative flex items-center min-h-body-md min-w-50 max-sm:min-w-full">
-        <div class="nav-links flex gap-4 w-full opacity-100 translate-y-0 transition-nav" id="nav-links">
+        <div class="nav-links flex gap-1 w-full transition-nav" id="nav-links">
             <a
                 href="/blog"
                 aria-current={Astro.url.pathname.startsWith("/blog") ? "page" : undefined}
-                class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles"
+                class="nav-link relative flex justify-center items-center gap-2 py-1.5 px-3 rounded-md text-sm transition-nav hover:text-fg-titles"
             >
-                <i class="not-italic flex" aria-hidden="true"><Icon name="file" /></i>
                 <span class="max-sm:hidden">Blog</span>
             </a>
             <a
                 href="/snippets"
                 aria-current={Astro.url.pathname.startsWith("/snippets") ? "page" : undefined}
-                class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles"
+                class="nav-link relative flex justify-center items-center gap-2 py-1.5 px-3 rounded-md text-sm transition-nav hover:text-fg-titles"
             >
-                <i class="not-italic flex" aria-hidden="true"><Icon name="package" /></i>
                 <span class="max-sm:hidden">Fragmentos</span>
             </a>
             <a
-                href="/resources"
-                aria-current={Astro.url.pathname.startsWith("/resources") ? "page" : undefined}
-                class="nav-link relative flex justify-center items-center gap-1 py-1 px-1 transition-nav hover:px-2 hover:text-fg-titles"
+                href="/stack"
+                aria-current={Astro.url.pathname.startsWith("/stack") ? "page" : undefined}
+                class="nav-link relative flex justify-center items-center gap-2 py-1.5 px-3 rounded-md text-sm transition-nav hover:text-fg-titles"
             >
-                <i class="not-italic flex" aria-hidden="true"><Icon name="library" /></i>
-                <span class="max-sm:hidden">Recursos</span>
+                <span class="max-sm:hidden">Stack</span>
+            </a>
+            <a
+                href="/sobre-mi"
+                aria-current={Astro.url.pathname.startsWith("/sobre-mi") ? "page" : undefined}
+                class="nav-link relative flex justify-center items-center gap-2 py-1.5 px-3 rounded-md text-sm transition-nav hover:text-fg-titles"
+            >
+                <span class="max-sm:hidden">Sobre mí</span>
             </a>
         </div>
         {
             navTitle && (
-                <div class="nav-title absolute inset-0 flex justify-center items-center opacity-0 scale-95 transition-nav whitespace-nowrap pointer-events-none" id="nav-title">
+                <div class="nav-title absolute inset-0 flex justify-center items-center transition-nav whitespace-nowrap pointer-events-none" id="nav-title">
                     <span class="font-medium text-fg-titles text-sm max-w-[90%] overflow-hidden text-ellipsis">{navTitle}</span>
                 </div>
             )
@@ -67,8 +69,8 @@ const { navTitle } = Astro.props;
         if (!navLinks || !navTitle || !articleHeader) return;
 
         const toggleNavbar = (showTitle: boolean) => {
-            navLinks.classList.toggle("hidden", showTitle);
-            navTitle.classList.toggle("active", showTitle);
+            navLinks.classList.toggle("swapped", showTitle);
+            navTitle.classList.toggle("swapped", showTitle);
         };
 
         new IntersectionObserver(

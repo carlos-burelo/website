@@ -1,9 +1,10 @@
 ---
-import Article from "#components/elements/article.astro";
-import Root from "#components/layout/root.astro";
-import components from "#components/mdx";
+import Article from "@/core/components/elements/article.astro";
+import Root from "@/core/components/layout/root.astro";
+import components from "@/core/components/mdx";
 import { render } from "astro:content";
-export { getPosts as getStaticPaths } from "#libs/providers";
+import { toSlug } from "@/core/libs/providers";
+export { getPosts as getStaticPaths } from "@/core/libs/providers";
 
 export const prerender = true;
 
@@ -19,6 +20,7 @@ const { title, description, createdAt, updatedAt } = entry.data;
     type="article"
     publishedAt={createdAt}
     updatedAt={updatedAt}
+    markdown={`/blog/${toSlug(entry.id)}.md`}
 >
     <Article entry={entry} headings={headings}>
         <Content components={components} />

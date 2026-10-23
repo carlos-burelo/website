@@ -1,58 +1,46 @@
 ---
-import Icon from "#components/elements/icon.astro";
+const EMAIL = "carlosfernandoburelo@gmail.com";
 ---
 
-<section class="reveal relative flex flex-col justify-center min-h-[calc(100dvh-2em)] my-0!">
-    <!-- bg glow: dual-color ambient -->
-    <div class="pointer-events-none fixed top-0 right-0 w-96 h-96 md:w-150 md:h-150 rounded-full bg-primary/8 blur-3xl -z-10"></div>
-    <div class="pointer-events-none fixed bottom-0 left-0 w-64 h-64 md:w-100 md:h-100 rounded-full bg-accent/6 blur-3xl -z-10"></div>
+<section class="flex flex-col justify-center min-h-[calc(100dvh-6em)] gap-10">
+    <h1 class="display leading-[1.04] tracking-[-0.02em] font-medium [text-wrap:balance] max-w-[24ch]">
+        <span class="block">Construyendo mis propias ideas,</span>
+        <span class="block">ayudando a impulsar las tuyas.</span>
+    </h1>
 
-    <div class="flex flex-col gap-8 py-16">
-        <div class="glass text-sm text-fg-paragraph w-fit px-3 py-1.5 rounded-full">
-            <span class="w-2 h-2 rounded-full bg-primary inline-block animate-pulse shrink-0 mr-2"></span>
-            Disponible para proyectos
-        </div>
+    <p class="max-w-[58ch] text-base md:text-lg leading-relaxed">
+        Soy Carlos Burelo, ingeniero de software. Por ocho años he escrito
+        sistemas para el trabajo de personas reales: gestión médica,
+        agendas veterinarias, análisis académico. En lo libre mantengo
+        herramientas open source y aquí escribo sobre diseño de código.
+    </p>
 
-        <!-- display editorial -->
-        <h1 class="text-[clamp(2.5rem,6.25vw,4.5rem)] leading-[1.1] tracking-tighter font-bold text-fg-titles [text-wrap:balance]">
-            <span class="block">Construyendo mis propias ideas,</span>
-            <span class="block bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">ayudando a impulsar las tuyas.</span>
-        </h1>
-
-        <p class="text-fg-paragraph leading-relaxed max-w-xl text-base md:text-lg">
-            Más de 8 años desarrollando software para clientes, productos propios y proyectos open source.
-            Me especializo en convertir necesidades complejas en soluciones claras, eficientes y fáciles de mantener.
-        </p>
-
-        <div class="flex gap-10 max-md:gap-8 flex-wrap">
-            <div class="flex flex-col">
-                <span class="text-2xl font-bold text-fg-titles">+8</span>
-                <span class="text-xs text-fg-paragraph/80">años de experiencia</span>
-            </div>
-            <div class="flex flex-col">
-                <span class="text-2xl font-bold text-fg-titles">+50</span>
-                <span class="text-xs text-fg-paragraph/80">proyectos lanzados</span>
-            </div>
-            <div class="flex flex-col">
-                <span class="text-2xl font-bold text-fg-titles">OSS</span>
-                <span class="text-xs text-fg-paragraph/80">open source mantenido</span>
-            </div>
-        </div>
-
-        <div class="flex gap-3 items-center flex-wrap">
-            <a href="mailto:carlosfernandoburelo@gmail.com" class="btn btn-primary">
-                Contáctame
+    <div class="flex flex-col gap-10">
+        <div class="flex items-center gap-5 flex-wrap">
+            <a href={`mailto:${EMAIL}`} class="btn btn-primary">
+                Escríbeme
             </a>
-            <a href="/works" class="btn btn-outline">
+            <a href="/works" class="text-sm text-fg-links underline underline-offset-4 decoration-border hover:decoration-primary hover:text-primary transition-colors">
                 Ver proyectos
             </a>
-            <div role="separator" class="w-px bg-border h-6 rounded"></div>
-            <a href="https://github.com/carlos-burelo" target="_blank" rel="noopener" aria-label="GitHub" class="glass text-fg-paragraph hover:text-primary transition-colors p-2 rounded-full">
-                <Icon name="github" />
-            </a>
-            <a href="https://linkedin.com/in/carlos-burelo" target="_blank" rel="noopener" aria-label="LinkedIn" class="glass text-fg-paragraph hover:text-primary transition-colors p-2 rounded-full">
-                <Icon name="linkedin" />
-            </a>
+        </div>
+
+        <div class="flex items-center justify-between gap-6 flex-wrap text-sm text-fg-paragraph">
+            <span>disponible para proyectos</span>
+            <nav class="flex items-center gap-5" aria-label="Contacto directo">
+                <a href="https://github.com/carlos-burelo" target="_blank" rel="noopener" class="underline underline-offset-4 decoration-transparent hover:decoration-current hover:text-fg-links transition-colors">GitHub</a>
+                <a href="https://linkedin.com/in/carlos-burelo" target="_blank" rel="noopener" class="underline underline-offset-4 decoration-transparent hover:decoration-current hover:text-fg-links transition-colors">LinkedIn</a>
+            </nav>
         </div>
     </div>
 </section>
+
+<style>
+    .display {
+        font-family: var(--font-family-display);
+    }
+    h1.display {
+        font-size: clamp(2.5rem, 5.5vw, 4.75rem);
+        font-optical-sizing: auto;
+    }
+</style>

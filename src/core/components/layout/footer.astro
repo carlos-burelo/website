@@ -1,66 +1,66 @@
 ---
-import Icon from "#components/elements/icon.astro";
-import { Image } from "astro:assets";
-import logo from "../../../../public/logo.svg";
+import Icon from "@/core/components/elements/icon.astro";
+
+const YEAR = new Date().getFullYear();
 ---
 
-<footer class="contain pt-12 pb-8 mt-16">
-    <div class="h-px w-full bg-linear-to-r from-primary/40 via-border to-border" aria-hidden="true"></div>
-    <div class="grid grid-cols-[1fr_auto] items-start gap-8 max-sm:grid-cols-1 mb-8">
+<footer class="contain pt-16 pb-8 mt-24">
+    <div class="h-px w-full bg-border" aria-hidden="true"></div>
+
+    <div class="grid grid-cols-[1fr_auto] items-start gap-8 max-sm:grid-cols-1 my-10">
 
         <!-- brand col -->
         <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2">
-                <Image src={logo} alt="Logo" width={32} height={32} class="w-8 h-8 object-contain" />
-                <span class="font-semibold text-fg-titles">Carlos Burelo</span>
-            </div>
-            <p class="text-xs text-fg-paragraph max-w-xs leading-relaxed">
-                Desarrollador web especializado en convertir ideas en software simple, claro y efectivo.
+            <span class="display text-2xl">Carlos Burelo</span>
+            <p class="text-sm text-fg-paragraph max-w-[38ch] leading-relaxed">
+                Ingeniero de software. Software simple, claro y efectivo.
             </p>
-        <div class="flex gap-3 mt-1">
-                <a href="https://github.com/carlos-burelo" target="_blank" rel="noopener" aria-label="GitHub" class="glass text-fg-paragraph hover:text-primary transition-colors p-2 rounded-full">
-                    <Icon name="github" />
-                </a>
-                <a href="https://linkedin.com/in/carlos-burelo" target="_blank" rel="noopener" aria-label="LinkedIn" class="glass text-fg-paragraph hover:text-primary transition-colors p-2 rounded-full">
-                    <Icon name="linkedin" />
-                </a>
-            </div>
         </div>
 
         <!-- nav cols -->
-        <div class="flex gap-12 max-sm:gap-8">
-            <div class="flex flex-col gap-2">
-                <span class="text-xs font-semibold uppercase tracking-widest text-fg-paragraph mb-1">Contenido</span>
+        <div class="flex gap-16 max-sm:gap-10">
+            <div class="flex flex-col gap-2.5">
+                <span class="display italic text-primary text-sm">Contenido</span>
                 <a href="/blog" class="text-sm text-fg-links hover:text-primary transition-colors">Blog</a>
                 <a href="/snippets" class="text-sm text-fg-links hover:text-primary transition-colors">Fragmentos</a>
-                <a href="/resources" class="text-sm text-fg-links hover:text-primary transition-colors">Recursos</a>
+                <a href="/stack" class="text-sm text-fg-links hover:text-primary transition-colors">Stack</a>
+                <a href="/sobre-mi" class="text-sm text-fg-links hover:text-primary transition-colors">Sobre mí</a>
+                <a href="/rss.xml" class="text-sm text-fg-links hover:text-primary transition-colors">RSS</a>
             </div>
-            <div class="flex flex-col gap-2">
-                <span class="text-xs font-semibold uppercase tracking-widest text-fg-paragraph mb-1">Trabajo</span>
+            <div class="flex flex-col gap-2.5">
+                <span class="display italic text-primary text-sm">Trabajo</span>
                 <a href="/works" class="text-sm text-fg-links hover:text-primary transition-colors">Proyectos</a>
                 <a href="mailto:carlosfernandoburelo@gmail.com" class="text-sm text-fg-links hover:text-primary transition-colors">Contacto</a>
+                <a href="/cv.pdf" target="_blank" rel="noopener" class="text-sm text-fg-links hover:text-primary transition-colors">Currículum</a>
             </div>
         </div>
 
     </div>
 
     <!-- bottom bar -->
-    <div class="flex items-center justify-between pt-6 max-sm:flex-col max-sm:gap-2 max-sm:items-start">
-        <span class="text-xs text-fg-paragraph/70">MIT {new Date().getFullYear()} — Carlos Burelo</span>
-        <div class="flex items-center gap-4">
+    <div class="flex items-center justify-between gap-4 flex-wrap pt-6 border-t border-border/60">
+        <span class="text-xs text-fg-paragraph">© {YEAR} Carlos Burelo</span>
+        <div class="flex items-center gap-5">
+            <a href="https://github.com/carlos-burelo" target="_blank" rel="noopener" aria-label="GitHub" class="text-xs text-fg-paragraph hover:text-primary transition-colors">GitHub</a>
+            <a href="https://linkedin.com/in/carlos-burelo" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-xs text-fg-paragraph hover:text-primary transition-colors">LinkedIn</a>
             <button
                 id="theme-toggle"
                 aria-label="Cambiar tema"
-                class="glass flex items-center gap-1.5 text-xs text-fg-paragraph hover:text-primary transition-colors px-2.5 py-1 rounded-full"
+                class="flex items-center gap-1.5 text-xs text-fg-paragraph hover:text-primary transition-colors cursor-pointer"
             >
                 <span class="theme-sun" aria-hidden="true"><Icon name="sun" /></span>
                 <span class="theme-moon" aria-hidden="true"><Icon name="moon" /></span>
                 <span id="theme-label">Modo claro</span>
             </button>
-            <span class="text-xs text-fg-paragraph">Hecho con <a href="https://astro.build" target="_blank" rel="noopener" class="hover:text-primary transition-colors">Astro</a></span>
         </div>
     </div>
 </footer>
+
+<style>
+    .display {
+        font-family: var(--font-family-display);
+    }
+</style>
 
 <script>
     function initTheme() {

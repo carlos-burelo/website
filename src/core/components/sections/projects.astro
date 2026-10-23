@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import { toSlug } from "@/core/libs/providers";
+
+const works = await getCollection("works");
+const sorted = works.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime());
+const highlight = sorted.slice(0, 4);
+---
+
+<section>
+    <div class="flex items-baseline justify-between gap-4 border-b border-border pb-4">
+        <h2 class="text-2xl">Proyectos</h2>
+        <a href="/works" class="text-sm text-fg-links hover:text-primary transition-colors">Ver todos</a>
+    </div>
+    <ul class="flex flex-col">
+        {
+            highlight.map(({ data }) => (
+                <li class="ruled py-5 group flex flex-col gap-1.5 min-w-0">
+                    <div class="flex items-baseline justify-between gap-6">
+                        <a
+                            href={data.repository}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-lg group-hover:text-primary transition-colors min-w-0"
+                        >
+                            {data.title}
+                        </a>
+                        <time class="shrink-0 text-fg-paragraph group-hover:text-primary transition-colors" datetime={data.createdAt.toISOString()}>
+                            {data.createdAt.getFullYear()}
+                        </time>
+                    </div>
+                    <p class="text-sm text-fg-paragraph leading-relaxed max-w-[70ch]">{data.description}</p>
+                </li>
+            ))
+        }
+    </ul>
+</section>

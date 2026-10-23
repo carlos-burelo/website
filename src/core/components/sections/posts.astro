@@ -1,7 +1,7 @@
 ---
-import PostCard from "#components/cards/post-card.astro";
-import SectionHead from "#components/elements/section-head.astro";
-import { getPosts } from "#libs/providers";
+import PostCard from "@/core/components/cards/post-card.astro";
+import SectionHead from "@/core/components/elements/section-head.astro";
+import { getPosts } from "@/core/libs/providers";
 
 const posts = await getPosts();
 
@@ -12,13 +12,13 @@ const postByYears = Object.groupBy(posts, ({ props: { entry } }) =>
 const years = Object.keys(postByYears).map(Number).sort((a, b) => b - a);
 ---
 
-<section class="reveal w-full max-w-[60rem] mx-auto">
+<section class="w-full max-w-[60rem] mx-auto">
     <SectionHead
         level={1}
         title="Blog"
         description="Artículos sobre programación: JavaScript, estructuras de datos, redes, arquitectura y diseño de lenguajes."
     />
-    <div class="reveal flex flex-col gap-12">
+    <div class="flex flex-col gap-12">
         {years.map((year) => (
             <div>
                 <h2>{year}</h2>

@@ -1,8 +1,8 @@
 ---
-import Root from "#components/layout/root.astro";
-import components from "#components/mdx";
+import Root from "@/core/components/layout/root.astro";
+import components from "@/core/components/mdx";
 import { render } from "astro:content";
-export { getSnippets as getStaticPaths } from "#libs/providers";
+export { getSnippets as getStaticPaths } from "@/core/libs/providers";
 
 export const prerender = true;
 

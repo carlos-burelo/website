@@ -1,42 +1,57 @@
 ---
-import ExperienceCart from "#components/cards/experience-card.astro";
-import SectionHead from "#components/elements/section-head.astro";
+import SectionHead from "@/core/components/elements/section-head.astro";
 
 const events = [
     {
         current: true,
-        date: "Ene 2025 - Ahora",
+        date: "Ene 2025 — ahora",
         role: "Desarrollador de software",
-        title: "Coordinación General de los Servicios Medicos UJAT",
+        title: "Coordinación General de los Servicios Médicos UJAT",
         summary:
             "Desarrollo de software para la Coordinación General de los Servicios Médicos de la Universidad Juárez Autónoma de Tabasco, mejorando la gestión administrativa y la atención al paciente.",
+        year: "2025",
     },
     {
-        date: "Ene 2024- Mar 2024",
-        role: " Desarrollador de aplicaciones Moviles",
-        title: "Software Estadístico Academico",
+        date: "Ene 2024 – Mar 2024",
+        year: "2024",
+        role: "Desarrollador de aplicaciones móviles",
+        title: "Software Estadístico Académico",
         summary: `Desarrollé un software estadístico para una institución académica, el cual proporciona análisis detallados y visualización de datos para apoyar la toma de decisiones en el ámbito académico y administrativo.`,
     },
     {
         date: "Ene 2024 – Jun 2024",
-        title: "PawCare",
+        year: "2024",
         role: "Ingeniero de software",
+        title: "PawCare",
         summary:
             "Diseñé una aplicación para el sector veterinario que optimiza la gestión de agendas, expedientes e insumos, mejorando la eficiencia administrativa y operacional.",
     },
     {
         date: "Oct 2023 – Mar 2024",
-        title: "Oftálmica Laser",
+        year: "2023",
         role: "Ingeniero de software",
+        title: "Oftálmica Laser",
         summary:
-            " Desarrollé software personalizado para mejorar la eficiencia en una clínica oftalmológica. Trabajé en estrecha colaboración con el personal médico para diseñar soluciones adaptadas a sus necesidades, mejorando la gestión de datos y la atención al paciente.",
+            "Desarrollé software personalizado para mejorar la eficiencia en una clínica oftalmológica. Trabajé en estrecha colaboración con el personal médico para diseñar soluciones adaptadas a sus necesidades, mejorando la gestión de datos y la atención al paciente.",
     },
 ];
 ---
 
 <section>
-    <SectionHead title="Experiencia" />
-    <ul class="reveal grid [&>li:last-child_.line]:hidden">
-        {events.map((event) => <ExperienceCart {...event} />)}
+    <SectionHead title="Trabajo" />
+    <ul class="flex flex-col">
+        {events.map((event) => (
+            <li class="ruled grid md:grid-cols-[10ch_1fr] gap-2 md:gap-10 py-7">
+                <time
+                    class="text-base pt-1"
+                    aria-label={event.date}
+                >{event.year}</time>
+                <div class="flex flex-col gap-1.5">
+                    <h3 class="text-xl md:text-2xl">{event.title}</h3>
+                    <span class="text-sm text-fg-paragraph">{event.role}</span>
+                    <p class="text-sm leading-relaxed max-w-[65ch]">{event.summary}</p>
+                </div>
+            </li>
+        ))}
     </ul>
 </section>

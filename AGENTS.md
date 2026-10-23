@@ -17,11 +17,12 @@ Deploy: Cloudflare Workers Static Assets. Build: `pnpm run build` → `dist/`.
 
 ## Estructura
 
-- `src/pages/`: `index`, `blog/`, `snippets/`, `works/`, `resources/`
+- `src/pages/`: `index`, `blog/`, `snippets/`, `works/`, `stack/` (+ rutas `*.md.ts` que
+  sirven el post/ficha en Markdown para agentes)
 - `src/core/components/`: `layout/`, `cards/`, `sections/`, `elements/`, `mdx/`
 - `src/core/{libs,constants,icons,theme}/`, `src/content/` (blog, works,
   snippets, `resources.json`), `src/content.config.ts`
-- Aliases: `#components/*`, `#libs/*`. Usarlos siempre; prohibido `../../core`.
+- Aliases: `@/core/components/*`, `@/core/libs/*`, etc. (`@/*` → `src/*`).
 
 ## Reglas
 

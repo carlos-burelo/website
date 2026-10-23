@@ -1,19 +1,15 @@
 ---
 export interface Props {
     title?: string;
-    overline?: string;
     description?: string;
     level?: 1 | 2;
 }
 
-const { title, overline, description, level = 2 } = Astro.props;
+const { title, description, level = 2 } = Astro.props;
 const Tag = level === 1 ? "h1" : "h2";
 ---
 
-<div class="flex flex-col gap-2 mb-8">
-    {overline && (
-        <span class="text-xs uppercase tracking-widest text-fg-paragraph">{overline}</span>
-    )}
+<div class="flex flex-col gap-2">
     {title && <Tag>{title}</Tag>}
-    {description && <p class="text-sm">{description}</p>}
+    {description && <p class="text-sm max-w-[60ch]">{description}</p>}
 </div>

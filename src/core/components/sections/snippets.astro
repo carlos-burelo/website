@@ -1,12 +1,13 @@
 ---
-import SnippetCard from "#components/cards/snippet-card.astro";
-import SectionHead from "#components/elements/section-head.astro";
+import SnippetCard from "@/core/components/cards/snippet-card.astro";
+import SectionHead from "@/core/components/elements/section-head.astro";
 
 export interface Props {
     snippets: Snippet[];
 }
 
 const { snippets } = Astro.props;
+
 ---
 
 <SectionHead
@@ -14,6 +15,6 @@ const { snippets } = Astro.props;
     title="Fragmentos"
     description="Fragmentos de código listos para copiar: CSS, JavaScript, Python, Rust y más."
 />
-<section class="reveal grid-cols-[repeat(auto-fill,minmax(240px,1fr))] max-w-[70rem] mx-auto w-full">
+<section class="grid-cols-[repeat(auto-fill,minmax(240px,1fr))] max-w-[70rem] mx-auto w-full">
     {snippets.map((snippet) => <SnippetCard {...snippet} />)}
 </section>

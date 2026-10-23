@@ -1,0 +1,106 @@
+---
+import Root from "@/core/components/layout/root.astro";
+import Experience from "@/core/components/sections/experience.astro";
+import Gallery from "@/core/components/sections/gallery.astro";
+
+const projects = [
+    {
+        name: "Varn",
+        href: "https://github.com/carlos-burelo/varn",
+        stack: "Rust",
+        description:
+            "Lenguaje de programación propio: compilador, sintaxis e infraestructura.",
+    },
+    {
+        name: "klin",
+        href: "https://github.com/carlos-burelo/klin",
+        stack: "TypeScript",
+        description:
+            "Gráficas y diagramas SSR-first sobre d3, en SVG puro y sin cliente.",
+    },
+    {
+        name: "wyrm",
+        href: "https://github.com/carlos-burelo/wyrm",
+        stack: "Rust",
+        description:
+            "Gestor de procesos para Windows Server, escrito para ir rápido.",
+    },
+    {
+        name: "Ark · AriaDB · jsonb",
+        stack: "TypeScript",
+        description:
+            "Almacenamiento embebido y formatos binarios sobre JSON.",
+    },
+];
+---
+
+<Root
+    title="Sobre mí"
+    description="Quién es Carlos Burelo, cómo trabaja y qué hace. Desarrollador de software: la web y lo que la sostiene — formatos de datos, lenguajes, herramientas."
+    navTitle="Sobre mí"
+>
+    <section class="w-full max-w-[60rem] mx-auto">
+        <h1>Sobre mí</h1>
+        <div class="ruled grid md:grid-cols-[1fr_2fr] gap-6 md:gap-20 py-10 items-start">
+            <p class="display italic text-primary text-lg">
+                Desarrollador de software,
+                <br />ingeniería de sistemas.
+            </p>
+            <div class="grid gap-4">
+                <p>
+                    Escribo software para la web: aplicaciones y servicios con
+                    TypeScript, Astro, Node y SQL. Fuera de ella, herramientas
+                    y experimentos — la mayoría terminan open source: Varn, un
+                    lenguaje de programación en Rust; klin, gráficas del lado
+                    del servidor; bases de datos embebidas; librerías.
+                </p>
+                <p>
+                    Aquí documento lo que aprendo en el camino: cómo se
+                    resuelve un problema, qué cuesta mantener una decisión,
+                    cuándo una idea funciona y cuándo no.
+                </p>
+            </div>
+        </div>
+
+        <ul class="flex flex-col">
+            {projects.map((project) => (
+                <li class="ruled grid md:grid-cols-[10ch_1fr] gap-2 md:gap-10 items-baseline py-6">
+                    <span class="text-sm text-fg-paragraph">{project.stack}</span>
+                    <div class="flex flex-col gap-1.5 min-w-0">
+                        <h2 class="text-xl md:text-2xl font-normal">
+                            {project.href ? (
+                                <a
+                                    href={project.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hover:text-primary transition-colors"
+                                >
+                                    {project.name}
+                                </a>
+                            ) : (
+                                project.name
+                            )}
+                        </h2>
+                        <p class="text-sm text-fg-paragraph leading-relaxed max-w-[65ch]">{project.description}</p>
+                    </div>
+                </li>
+            ))}
+        </ul>
+
+        <Experience />
+        <Gallery />
+
+        <div class="ruled grid md:grid-cols-[10ch_1fr] gap-2 md:gap-10 py-6 items-baseline">
+            <span class="text-sm text-fg-paragraph">Contacto</span>
+            <div class="flex gap-3 items-baseline flex-wrap">
+                <a href="/cv.pdf" target="_blank" rel="noopener" class="text-fg-links hover:text-primary transition-colors">Currículum</a>
+                <span class="text-border" aria-hidden="true">·</span>
+                <a href="mailto:carlosfernandoburelo@gmail.com" class="text-fg-links hover:text-primary transition-colors">Correo</a>
+                <span class="text-border" aria-hidden="true">·</span>
+                <a href="https://github.com/carlos-burelo" target="_blank" rel="noopener" class="text-fg-links hover:text-primary transition-colors">GitHub</a>
+                <span class="text-border" aria-hidden="true">·</span>
+                <a href="https://linkedin.com/in/carlos-burelo" target="_blank" rel="noopener" class="text-fg-links hover:text-primary transition-colors">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+</Root>

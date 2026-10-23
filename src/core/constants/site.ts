@@ -6,5 +6,5 @@ export const SITE = {
     url: 'https://twwk.cc',
     locale: 'es_MX',
     author: 'Carlos Burelo',
-    themeColor: '#080b0f',
+    themeColor: '#0b0e0d',
 } as const;
