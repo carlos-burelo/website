@@ -1,18 +1,50 @@
 ---
+import {
+    Book,
+    FileText,
+    Globe,
+    Library,
+    Link,
+    Moon,
+    Package,
+    Sun,
+    Video,
+    Wrench,
+} from "@lucide/astro";
+
 export interface Props {
     name: string;
 }
 
-const { name } = Astro.props;
-
-const icons = import.meta.glob<string>("/src/core/icons/*.svg", {
+const LOCAL_ICONS = import.meta.glob<string>("/src/core/icons/*.svg", {
     query: "?raw",
     import: "default",
     eager: true,
 });
 
-const iconPath = `/src/core/icons/${name}.svg`;
-const icon = icons[iconPath];
+/* UI: Lucide. Branding (logos de tech): SVG local. Un solo camino. */
+const LUCIDE: Record<string, (props: any) => any> = {
+    book: Book,
+    file: FileText,
+    globe: Globe,
+    library: Library,
+    link: Link,
+    moon: Moon,
+    package: Package,
+    sun: Sun,
+    video: Video,
+    wrench: Wrench,
+};
+
+const { name } = Astro.props;
+const Lucide = LUCIDE[name];
+const raw = LOCAL_ICONS[`/src/core/icons/${name}.svg`];
 ---
 
-<Fragment set:html={icon} />
+{
+    Lucide ? (
+        <Lucide />
+    ) : raw ? (
+        <Fragment set:html={raw} />
+    ) : null
+}

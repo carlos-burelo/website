@@ -396,6 +396,15 @@
         border-radius: var(--radius-md);
     }
 
+    /* tema activo controla icono del toggle: cero JS */
+    html:not([data-theme="light"]) .theme-moon {
+        display: none;
+    }
+
+    html[data-theme="light"] .theme-sun {
+        display: none;
+    }
+
     /* snippet cards: language colors */
     .lang-icon[data-lang="javascript"] { color: oklch(79.5% 0.184 86.047); }
     .lang-icon[data-lang="typescript"] { color: oklch(54.6% 0.245 262.881); }

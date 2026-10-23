@@ -52,7 +52,8 @@ import logo from "../../../../public/logo.svg";
                 aria-label="Cambiar tema"
                 class="glass flex items-center gap-1.5 text-xs text-fg-paragraph hover:text-primary transition-colors px-2.5 py-1 rounded-full"
             >
-                <span id="theme-icon">☀️</span>
+                <span class="theme-sun" aria-hidden="true"><Icon name="sun" /></span>
+                <span class="theme-moon" aria-hidden="true"><Icon name="moon" /></span>
                 <span id="theme-label">Modo claro</span>
             </button>
             <span class="text-xs text-fg-paragraph">Hecho con <a href="https://astro.build" target="_blank" rel="noopener" class="hover:text-primary transition-colors">Astro</a></span>
@@ -63,14 +64,12 @@ import logo from "../../../../public/logo.svg";
 <script>
     function initTheme() {
         const btn = document.getElementById('theme-toggle');
-        const icon = document.getElementById('theme-icon');
         const label = document.getElementById('theme-label');
-        if (!btn || !icon || !label) return;
+        if (!btn || !label) return;
 
         const isLight = () => document.documentElement.getAttribute('data-theme') === 'light';
 
         const update = () => {
-            icon.textContent = isLight() ? '🌙' : '☀️';
             label.textContent = isLight() ? 'Modo oscuro' : 'Modo claro';
         };
 

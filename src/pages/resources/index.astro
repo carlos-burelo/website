@@ -1,14 +1,15 @@
 ---
 import Root from "#components/layout/root.astro";
 import SectionHead from "#components/elements/section-head.astro";
+import Icon from "#components/elements/icon.astro";
 import resources from "#content/resources.json";
 
 const TYPE_ICONS: Record<string, string> = {
-    tool:    "🔧",
-    book:    "📖",
-    website: "🌐",
-    video:   "🎥",
-    library: "📦",
+    tool:    "wrench",
+    book:    "book",
+    website: "globe",
+    video:   "video",
+    library: "package",
 };
 
 const grouped = Object.groupBy(resources, (r) => r.category);
@@ -42,7 +43,7 @@ const categories = Object.keys(grouped).sort();
                                 rel="noopener noreferrer"
                                 class="card group flex items-start gap-3 p-4"
                             >
-                                <span class="text-xl shrink-0 mt-0.5" aria-hidden="true">{TYPE_ICONS[resource.type] ?? "🔗"}</span>
+                                <span class="shrink-0 mt-0.5 text-fg-paragraph group-hover:text-primary transition-colors" aria-hidden="true"><Icon name={TYPE_ICONS[resource.type] ?? "link"} /></span>
                                 <div class="flex flex-col gap-0.5 min-w-0">
                                     <span class="text-sm font-medium text-fg-titles group-hover:text-primary transition-colors leading-tight">{resource.title}</span>
                                     <span class="text-xs text-fg-paragraph leading-relaxed">{resource.description}</span>
